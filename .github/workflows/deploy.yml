@@ -29,6 +29,7 @@ jobs:
             fi
 
             cd "$APP_DIR"
+            git remote set-url origin "$REPO_URL"
             git fetch --all
             git checkout "$BRANCH"
             git reset --hard "origin/$BRANCH"
