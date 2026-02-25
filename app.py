@@ -248,12 +248,501 @@ GUIDE_CONTENT = {
 	},
 }
 
+LEGAL_CONTENT = {
+	"fr": {
+		"title": "Confidentialité & cookies",
+		"intro": "Cette page explique comment le site Bilieu traite les données personnelles et utilise les cookies.",
+		"sections": [
+			{
+				"title": "Responsable du traitement",
+				"items": [
+					"Hébergeur du site: Bilieu (contact via la section Contact).",
+					"E-mail de contact: votre-email@example.com.",
+				],
+			},
+			{
+				"title": "Données traitées",
+				"items": [
+					"Ce site ne crée pas de compte utilisateur et ne collecte pas de données marketing.",
+					"Les seules données potentiellement transmises sont celles que vous envoyez volontairement (email, WhatsApp).",
+				],
+			},
+			{
+				"title": "Cookies",
+				"items": [
+					"Un cookie local de consentement est utilisé pour mémoriser votre choix (accepté/refusé).",
+					"Aucun cookie publicitaire ou traqueur tiers n'est activé par défaut.",
+				],
+			},
+			{
+				"title": "Vos droits (RGPD)",
+				"items": [
+					"Vous pouvez demander l'accès, la rectification ou la suppression de vos données transmises.",
+					"Vous pouvez modifier votre consentement cookies à tout moment via le bouton en bas de page.",
+				],
+			},
+		],
+	},
+	"en": {
+		"title": "Privacy & cookies",
+		"intro": "This page explains how the Bilieu website handles personal data and uses cookies.",
+		"sections": [
+			{
+				"title": "Data controller",
+				"items": [
+					"Website owner: Bilieu (contact via the Contact section).",
+					"Contact email: your-email@example.com.",
+				],
+			},
+			{
+				"title": "Processed data",
+				"items": [
+					"This website does not create user accounts and does not run marketing collection.",
+					"Only data you voluntarily send (email, WhatsApp) may be processed.",
+				],
+			},
+			{
+				"title": "Cookies",
+				"items": [
+					"A local consent cookie equivalent is used to remember your choice (accepted/rejected).",
+					"No advertising or third-party tracking cookie is enabled by default.",
+				],
+			},
+			{
+				"title": "Your GDPR rights",
+				"items": [
+					"You may request access, correction, or deletion of data you sent.",
+					"You may change cookie consent at any time via the footer button.",
+				],
+			},
+		],
+	},
+	"it": {
+		"title": "Privacy e cookie",
+		"intro": "Questa pagina spiega come il sito Bilieu tratta i dati personali e utilizza i cookie.",
+		"sections": [
+			{
+				"title": "Titolare del trattamento",
+				"items": [
+					"Proprietario del sito: Bilieu (contatto nella sezione Contatto).",
+					"Email di contatto: vostra-email@example.com.",
+				],
+			},
+			{
+				"title": "Dati trattati",
+				"items": [
+					"Il sito non crea account utente e non effettua raccolta marketing.",
+					"Sono trattati solo i dati inviati volontariamente (email, WhatsApp).",
+				],
+			},
+			{
+				"title": "Cookie",
+				"items": [
+					"Viene usato un cookie locale di consenso per ricordare la tua scelta (accettato/rifiutato).",
+					"Nessun cookie pubblicitario o di tracciamento di terze parti è attivo per impostazione predefinita.",
+				],
+			},
+			{
+				"title": "I tuoi diritti (GDPR)",
+				"items": [
+					"Puoi chiedere accesso, rettifica o cancellazione dei dati inviati.",
+					"Puoi modificare il consenso cookie in qualsiasi momento dal pulsante nel footer.",
+				],
+			},
+		],
+	},
+}
+
+HISTORY_CONTENT = {
+	"fr": {
+		"title": "L'histoire de Bilieu",
+		"intro": "Bilieu est une commune du nord Isère, au bord du lac de Paladru. Son histoire est liée à la vie rurale, aux voies de passage locales et à l'évolution touristique du lac.",
+		"kpis": [
+			{"label": "Région", "value": "Auvergne-Rhône-Alpes"},
+			{"label": "Territoire", "value": "Pays voironnais"},
+			{"label": "Repère local", "value": "Lac de Paladru"},
+			{"label": "Identité", "value": "Village nature et patrimoine"},
+		],
+		"sections": [
+			{
+				"title": "Étymologie du nom Bilieu",
+				"items": [
+					"Selon des interprétations toponymiques locales, le nom Bilieu pourrait dériver d'une forme ancienne liée à un domaine rural gallo-romain.",
+					"Comme pour de nombreux noms de communes anciennes, l'origine exacte n'est pas absolument certaine et peut varier selon les sources historiques.",
+				],
+			},
+			{
+				"title": "Origines rurales",
+				"items": [
+					"Le développement du village s'est appuyé sur l'agriculture, l'élevage et la gestion des terres autour du lac.",
+					"L'habitat traditionnel s'organise historiquement en hameaux et maisons familiales tournés vers les activités locales.",
+				],
+			},
+			{
+				"title": "Lien avec le lac de Paladru",
+				"items": [
+					"Le lac a structuré la vie quotidienne: pêche, circulation locale, loisirs, puis attractivité touristique.",
+					"Aujourd'hui encore, le lac reste au cœur de l'identité paysagère et culturelle de Bilieu.",
+				],
+			},
+			{
+				"title": "Patrimoine et vie locale",
+				"items": [
+					"Le territoire conserve un caractère résidentiel paisible, mêlant mémoire rurale et usages contemporains.",
+					"La commune valorise un cadre de vie naturel, avec un rythme marqué par les saisons et les activités de plein air.",
+				],
+			},
+		],
+	},
+	"en": {
+		"title": "The history of Bilieu",
+		"intro": "Bilieu is a municipality in northern Isère, on the shores of Lake Paladru. Its history is tied to rural life, local routes, and the lake's growing tourism role.",
+		"kpis": [
+			{"label": "Region", "value": "Auvergne-Rhône-Alpes"},
+			{"label": "Area", "value": "Pays voironnais"},
+			{"label": "Local landmark", "value": "Lake Paladru"},
+			{"label": "Identity", "value": "Nature and heritage village"},
+		],
+		"sections": [
+			{
+				"title": "Etymology of the name Bilieu",
+				"items": [
+					"According to local toponymic interpretations, the name Bilieu may come from an older form linked to a rural Gallo-Roman estate.",
+					"As with many old place names, the exact origin is not fully certain and can vary depending on historical sources.",
+				],
+			},
+			{
+				"title": "Rural roots",
+				"items": [
+					"The village developed through agriculture, livestock activity, and land use around the lake.",
+					"Traditional settlement patterns historically relied on hamlets and family homes linked to local work.",
+				],
+			},
+			{
+				"title": "Connection with Lake Paladru",
+				"items": [
+					"The lake shaped daily life: fishing, local movement, leisure, and later visitor attraction.",
+					"Today, it remains central to Bilieu's landscape and cultural identity.",
+				],
+			},
+			{
+				"title": "Heritage and local life",
+				"items": [
+					"The area keeps a calm residential character, combining rural memory with modern uses.",
+					"The municipality values a nature-focused lifestyle with strong seasonal outdoor activities.",
+				],
+			},
+		],
+	},
+	"it": {
+		"title": "La storia di Bilieu",
+		"intro": "Bilieu è un comune del nord dell'Isère, sulle rive del lago di Paladru. La sua storia è legata alla vita rurale, ai percorsi locali e allo sviluppo turistico del lago.",
+		"kpis": [
+			{"label": "Regione", "value": "Auvergne-Rhône-Alpes"},
+			{"label": "Territorio", "value": "Pays voironnais"},
+			{"label": "Riferimento locale", "value": "Lago di Paladru"},
+			{"label": "Identità", "value": "Natura e patrimonio"},
+		],
+		"sections": [
+			{
+				"title": "Etimologia del nome Bilieu",
+				"items": [
+					"Secondo interpretazioni toponomastiche locali, il nome Bilieu potrebbe derivare da una forma antica legata a un dominio rurale gallo-romano.",
+					"Come per molti toponimi antichi, l'origine precisa non è del tutto certa e può variare a seconda delle fonti storiche.",
+				],
+			},
+			{
+				"title": "Origini rurali",
+				"items": [
+					"Lo sviluppo del villaggio si è basato su agricoltura, allevamento e gestione delle terre attorno al lago.",
+					"L'insediamento tradizionale si è storicamente organizzato in piccoli nuclei e case familiari legate alle attività locali.",
+				],
+			},
+			{
+				"title": "Legame con il lago di Paladru",
+				"items": [
+					"Il lago ha strutturato la vita quotidiana: pesca, spostamenti locali, svago e poi attrattività turistica.",
+					"Ancora oggi il lago resta al centro dell'identità paesaggistica e culturale di Bilieu.",
+				],
+			},
+			{
+				"title": "Patrimonio e vita locale",
+				"items": [
+					"Il territorio mantiene un carattere residenziale tranquillo, tra memoria rurale e usi contemporanei.",
+					"Il comune valorizza uno stile di vita naturale, scandito dalle stagioni e dalle attività all'aperto.",
+				],
+			},
+		],
+	},
+}
+
+BUS_CONTENT = {
+	"fr": {
+		"title": "Lignes de bus",
+		"intro": "Informations pratiques pour organiser vos trajets autour de Bilieu et du lac de Paladru. Les horaires peuvent évoluer selon la saison: vérifiez toujours les horaires officiels avant départ.",
+		"links": [
+			{"label": "Consulter les horaires (PDF ligne 526-1)", "url": "https://www.paysvoironnais.com/wp-content/uploads/2025/08/526-1.pdf"},
+			{"label": "Itinéraire en transport (Google Maps)", "url": "https://www.google.com/maps/dir/?api=1&destination=Bilieu"},
+		],
+		"kpis": [
+			{"label": "Départ conseillé", "value": "Arrêt Bilieu centre"},
+			{"label": "Correspondance", "value": "Voiron gare"},
+			{"label": "Vers le lac", "value": "Bilieu / Charavines"},
+			{"label": "Conseil", "value": "Arriver 5 min avant"},
+		],
+		"sections": [
+			{
+				"title": "Horaires types (indicatifs)",
+				"items": [
+					"Lundi-vendredi: passages renforcés le matin et en fin d'après-midi.",
+					"Samedi: fréquence réduite, vérifier les retours en soirée.",
+					"Dimanche et jours fériés: service limité selon période.",
+				],
+			},
+			{
+				"title": "Itinéraires utiles",
+				"items": [
+					"Bilieu → Charavines: accès commerces et zones du lac.",
+					"Bilieu → Voiron: correspondance train et services urbains.",
+					"Bilieu → Le Pin / Paladru: déplacements locaux et balades.",
+				],
+			},
+			{
+				"title": "Conseils voyageurs",
+				"items": [
+					"Prévoir l'appoint ou un titre de transport validé avant montée.",
+					"En période touristique, anticiper les départs très demandés.",
+					"Conserver une alternative (taxi/covoiturage) pour les retours tardifs.",
+				],
+			},
+		],
+	},
+	"en": {
+		"title": "Bus lines",
+		"intro": "Practical information to plan trips around Bilieu and Lake Paladru. Timetables may change by season: always check official updates before departure.",
+		"links": [
+			{"label": "Check timetables (PDF line 526-1)", "url": "https://www.paysvoironnais.com/wp-content/uploads/2025/08/526-1.pdf"},
+			{"label": "Transit route (Google Maps)", "url": "https://www.google.com/maps/dir/?api=1&destination=Bilieu"},
+		],
+		"kpis": [
+			{"label": "Recommended stop", "value": "Bilieu center"},
+			{"label": "Main connection", "value": "Voiron station"},
+			{"label": "Toward the lake", "value": "Bilieu / Charavines"},
+			{"label": "Tip", "value": "Arrive 5 min early"},
+		],
+		"sections": [
+			{
+				"title": "Typical timetables (indicative)",
+				"items": [
+					"Monday-Friday: stronger frequency in early morning and late afternoon.",
+					"Saturday: reduced service, check evening return options.",
+					"Sundays and holidays: limited service depending on period.",
+				],
+			},
+			{
+				"title": "Useful routes",
+				"items": [
+					"Bilieu → Charavines: access to shops and lake areas.",
+					"Bilieu → Voiron: train connection and urban services.",
+					"Bilieu → Le Pin / Paladru: local trips and nature outings.",
+				],
+			},
+			{
+				"title": "Traveler tips",
+				"items": [
+					"Prepare fare or a valid ticket before boarding.",
+					"During tourist season, anticipate peak departures.",
+					"Keep a backup option (taxi/carpool) for late returns.",
+				],
+			},
+		],
+	},
+	"it": {
+		"title": "Linee bus",
+		"intro": "Informazioni pratiche per organizzare gli spostamenti intorno a Bilieu e al lago di Paladru. Gli orari possono cambiare in base alla stagione: verificare sempre gli aggiornamenti ufficiali prima della partenza.",
+		"links": [
+			{"label": "Consulta orari (PDF linea 526-1)", "url": "https://www.paysvoironnais.com/wp-content/uploads/2025/08/526-1.pdf"},
+			{"label": "Percorso trasporto pubblico (Google Maps)", "url": "https://www.google.com/maps/dir/?api=1&destination=Bilieu"},
+		],
+		"kpis": [
+			{"label": "Fermata consigliata", "value": "Bilieu centro"},
+			{"label": "Coincidenza", "value": "Stazione di Voiron"},
+			{"label": "Verso il lago", "value": "Bilieu / Charavines"},
+			{"label": "Consiglio", "value": "Arrivare 5 min prima"},
+		],
+		"sections": [
+			{
+				"title": "Orari tipici (indicativi)",
+				"items": [
+					"Lunedì-venerdì: frequenza maggiore al mattino e nel tardo pomeriggio.",
+					"Sabato: servizio ridotto, verificare i rientri serali.",
+					"Domenica e festivi: servizio limitato secondo il periodo.",
+				],
+			},
+			{
+				"title": "Itinerari utili",
+				"items": [
+					"Bilieu → Charavines: accesso a negozi e aree del lago.",
+					"Bilieu → Voiron: coincidenza treno e servizi urbani.",
+					"Bilieu → Le Pin / Paladru: spostamenti locali e passeggiate.",
+				],
+			},
+			{
+				"title": "Consigli di viaggio",
+				"items": [
+					"Preparare il pagamento o un titolo di viaggio valido prima della salita.",
+					"In alta stagione, anticipare le partenze più richieste.",
+					"Tenere un'alternativa (taxi/carpooling) per i rientri tardivi.",
+				],
+			},
+		],
+	},
+}
+
+ENVIRONMENT_CONTENT = {
+	"fr": {
+		"title": "Astuces environnement",
+		"intro": "Des gestes simples pour profiter du séjour à Bilieu tout en respectant la nature, le lac et le voisinage.",
+		"kpis": [
+			{"label": "Objectif", "value": "Réduire les déchets"},
+			{"label": "Priorité", "value": "Économiser l'eau"},
+			{"label": "Mobilité", "value": "Privilégier bus et marche"},
+			{"label": "Esprit", "value": "Laisser le lieu propre"},
+		],
+		"sections": [
+			{
+				"title": "Eau & énergie",
+				"items": [
+					"Limiter la durée des douches et couper l'eau pendant le savonnage.",
+					"Éteindre les lumières en quittant une pièce.",
+					"Ne pas laisser les chargeurs branchés inutilement.",
+				],
+			},
+			{
+				"title": "Déchets & tri",
+				"items": [
+					"Trier les emballages, verre et déchets ménagers selon les bacs locaux.",
+					"Éviter le jetable: gourde, sacs réutilisables, boîtes repas.",
+					"Ne rien laisser au bord du lac ni sur les sentiers.",
+				],
+			},
+			{
+				"title": "Mobilité douce",
+				"items": [
+					"Privilégier les lignes de bus et les déplacements à pied pour les trajets courts.",
+					"Regrouper les courses pour limiter les déplacements en voiture.",
+					"Respecter les zones de stationnement autorisées.",
+				],
+			},
+			{
+				"title": "Respect du cadre naturel",
+				"items": [
+					"Rester sur les chemins balisés lors des balades.",
+					"Éviter le bruit en soirée pour préserver la tranquillité du lieu.",
+					"Observer la faune et la flore sans les perturber.",
+				],
+			},
+		],
+	},
+	"en": {
+		"title": "Environment tips",
+		"intro": "Simple actions to enjoy your stay in Bilieu while respecting nature, the lake, and local residents.",
+		"kpis": [
+			{"label": "Goal", "value": "Reduce waste"},
+			{"label": "Priority", "value": "Save water"},
+			{"label": "Mobility", "value": "Use bus and walking"},
+			{"label": "Mindset", "value": "Leave the place clean"},
+		],
+		"sections": [
+			{
+				"title": "Water & energy",
+				"items": [
+					"Keep showers short and turn off water while soaping.",
+					"Switch off lights when leaving a room.",
+					"Avoid leaving chargers plugged in unnecessarily.",
+				],
+			},
+			{
+				"title": "Waste & sorting",
+				"items": [
+					"Sort packaging, glass, and household waste using local bins.",
+					"Avoid single-use items: reusable bottle, bags, food boxes.",
+					"Do not leave litter near the lake or on trails.",
+				],
+			},
+			{
+				"title": "Softer mobility",
+				"items": [
+					"Use bus lines and walk for short trips when possible.",
+					"Group errands to reduce car travel.",
+					"Respect authorized parking zones.",
+				],
+			},
+			{
+				"title": "Respect the natural setting",
+				"items": [
+					"Stay on marked paths during walks.",
+					"Keep noise low in the evening to preserve calm surroundings.",
+					"Observe fauna and flora without disturbing them.",
+				],
+			},
+		],
+	},
+	"it": {
+		"title": "Consigli per l'ambiente",
+		"intro": "Piccoli gesti per vivere il soggiorno a Bilieu rispettando natura, lago e residenti.",
+		"kpis": [
+			{"label": "Obiettivo", "value": "Ridurre i rifiuti"},
+			{"label": "Priorità", "value": "Risparmiare acqua"},
+			{"label": "Mobilità", "value": "Bus e spostamenti a piedi"},
+			{"label": "Spirito", "value": "Lasciare il luogo pulito"},
+		],
+		"sections": [
+			{
+				"title": "Acqua ed energia",
+				"items": [
+					"Ridurre la durata della doccia e chiudere l'acqua durante l'insaponamento.",
+					"Spegnere le luci quando si esce da una stanza.",
+					"Non lasciare i caricabatterie collegati inutilmente.",
+				],
+			},
+			{
+				"title": "Rifiuti e raccolta differenziata",
+				"items": [
+					"Separare imballaggi, vetro e rifiuti domestici secondo i contenitori locali.",
+					"Evitare il monouso: borraccia, borse riutilizzabili, contenitori pasto.",
+					"Non lasciare rifiuti vicino al lago o sui sentieri.",
+				],
+			},
+			{
+				"title": "Mobilità dolce",
+				"items": [
+					"Preferire le linee bus e gli spostamenti a piedi per i tragitti brevi.",
+					"Raggruppare gli acquisti per ridurre gli spostamenti in auto.",
+					"Rispettare le aree di parcheggio autorizzate.",
+				],
+			},
+			{
+				"title": "Rispetto del contesto naturale",
+				"items": [
+					"Restare sui sentieri segnalati durante le passeggiate.",
+					"Limitare il rumore serale per preservare la tranquillità del luogo.",
+					"Osservare fauna e flora senza disturbarle.",
+				],
+			},
+		],
+	},
+}
+
 CONTENT = {
 	"fr": {
 		"lang_name": "Français",
 		"meta_title": "Bilieu & lac de Paladru",
 		"nav": {
 			"beauties": "Beautés du lac",
+			"bus": "Lignes de bus",
+			"environment": "Astuces environnement",
+			"history": "Histoire de Bilieu",
 			"house": "Maison Airbnb",
 			"house_photos": "Photos maison",
 			"services": "Services & marchés",
@@ -267,6 +756,10 @@ CONTENT = {
 		"beauties": {
 			"title": "Les beautés du lac de Paladru",
 			"text": "Le lac de Paladru offre des paysages calmes, des balades nature et des moments inoubliables au fil de l'eau.",
+		},
+		"history": {
+			"title": "L'histoire de Bilieu",
+			"text": "Village du pays voironnais, Bilieu s'est développé autour de ses terres agricoles et de sa relation privilégiée avec le lac de Paladru. Son identité mêle patrimoine rural, vie locale et tourisme nature.",
 		},
 		"house": {
 			"title": "La maison Airbnb",
@@ -385,6 +878,9 @@ CONTENT = {
 		"meta_title": "Bilieu & Lake Paladru",
 		"nav": {
 			"beauties": "Lake Beauty",
+			"bus": "Bus lines",
+			"environment": "Environment tips",
+			"history": "History of Bilieu",
 			"house": "Airbnb Home",
 			"house_photos": "House Photos",
 			"services": "Services & Markets",
@@ -398,6 +894,10 @@ CONTENT = {
 		"beauties": {
 			"title": "The beauty of Lake Paladru",
 			"text": "Lake Paladru is perfect for peaceful views, nature walks, and unforgettable moments by the water.",
+		},
+		"history": {
+			"title": "The history of Bilieu",
+			"text": "Bilieu, in the Voironnais area, grew around farming traditions and a strong connection to Lake Paladru. Its identity combines rural heritage, local life, and nature-oriented tourism.",
 		},
 		"house": {
 			"title": "The Airbnb house",
@@ -516,6 +1016,9 @@ CONTENT = {
 		"meta_title": "Bilieu e lago di Paladru",
 		"nav": {
 			"beauties": "Bellezze del lago",
+			"bus": "Linee bus",
+			"environment": "Consigli ambiente",
+			"history": "Storia di Bilieu",
 			"house": "Casa Airbnb",
 			"house_photos": "Foto casa",
 			"services": "Servizi e mercati",
@@ -529,6 +1032,10 @@ CONTENT = {
 		"beauties": {
 			"title": "Le bellezze del lago di Paladru",
 			"text": "Il lago di Paladru offre panorami tranquilli, passeggiate nella natura e momenti indimenticabili sull'acqua.",
+		},
+		"history": {
+			"title": "La storia di Bilieu",
+			"text": "Bilieu, nel territorio del Voironnais, si è sviluppata tra tradizione agricola e legame con il lago di Paladru. La sua identità unisce patrimonio rurale, vita locale e turismo nella natura.",
 		},
 		"house": {
 			"title": "La casa Airbnb",
@@ -691,6 +1198,66 @@ def guide():
 		supported_langs=SUPPORTED_LANGS,
 		content=CONTENT[lang],
 		guide=GUIDE_CONTENT[lang],
+	)
+
+
+@app.route("/privacy")
+def privacy():
+	lang = request.args.get("lang", "fr").lower()
+	if lang not in SUPPORTED_LANGS:
+		lang = "fr"
+
+	return render_template(
+		"privacy.html",
+		lang=lang,
+		supported_langs=SUPPORTED_LANGS,
+		content=CONTENT[lang],
+		legal=LEGAL_CONTENT[lang],
+	)
+
+
+@app.route("/history")
+def history():
+	lang = request.args.get("lang", "fr").lower()
+	if lang not in SUPPORTED_LANGS:
+		lang = "fr"
+
+	return render_template(
+		"history.html",
+		lang=lang,
+		supported_langs=SUPPORTED_LANGS,
+		content=CONTENT[lang],
+		history=HISTORY_CONTENT[lang],
+	)
+
+
+@app.route("/bus")
+def bus():
+	lang = request.args.get("lang", "fr").lower()
+	if lang not in SUPPORTED_LANGS:
+		lang = "fr"
+
+	return render_template(
+		"bus.html",
+		lang=lang,
+		supported_langs=SUPPORTED_LANGS,
+		content=CONTENT[lang],
+		bus=BUS_CONTENT[lang],
+	)
+
+
+@app.route("/environment")
+def environment():
+	lang = request.args.get("lang", "fr").lower()
+	if lang not in SUPPORTED_LANGS:
+		lang = "fr"
+
+	return render_template(
+		"environment.html",
+		lang=lang,
+		supported_langs=SUPPORTED_LANGS,
+		content=CONTENT[lang],
+		environment=ENVIRONMENT_CONTENT[lang],
 	)
 
 

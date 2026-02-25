@@ -15,10 +15,15 @@
           <span class="brand-name">BILIEU</span>
         </a>
       </h1>
-      <nav class="main-nav">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Menu</button>
+      <nav class="main-nav" id="main-nav">
         <a href="{{ url_for('index', lang=lang) }}#home">Accueil</a>
         <a href="{{ url_for('index', lang=lang) }}#house">{{ content.nav.house }}</a>
         <a href="{{ url_for('house_photos', lang=lang) }}">{{ content.nav.house_photos }}</a>
+        <a href="{{ url_for('history', lang=lang) }}">{{ content.nav.history }}</a>
+        <a href="{{ url_for('bus', lang=lang) }}">{{ content.nav.bus }}</a>
+        <a href="{{ url_for('environment', lang=lang) }}">{{ content.nav.environment }}</a>
+        <a href="{{ url_for('guide', lang=lang) }}">{% if lang == 'fr' %}Guide{% elif lang == 'it' %}Guida{% else %}Guide{% endif %}</a>
         <a href="{{ url_for('index', lang=lang) }}#services">{{ content.nav.services }}</a>
         <a href="{{ url_for('index', lang=lang) }}#beauties">{{ content.nav.beauties }}</a>
         <a href="{{ url_for('index', lang=lang) }}#contact">{{ content.nav.contact }}</a>
@@ -38,7 +43,7 @@
         <h2>{{ content.house_gallery.title }}</h2>
         <div class="hero-actions">
           <a class="btn btn-primary btn-airbnb" href="{{ content.house.airbnb_url }}" target="_blank" rel="noopener noreferrer">
-            <img class="airbnb-logo" src="{{ url_for('static', filename='images/airbnb.ico') }}" alt="" aria-hidden="true" />
+            <img class="airbnb-logo" src="{{ url_for('static', filename='images/airbnb.svg') }}" alt="" aria-hidden="true" />
             <span>{{ content.house.airbnb_label }}</span>
           </a>
         </div>
@@ -60,10 +65,36 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container">
+    <div class="container footer-legal-wrap">
       <p>© Bilieu - Lac de Paladru</p>
+      <div class="footer-links">
+        <a href="{{ url_for('privacy', lang=lang) }}">{% if lang == 'fr' %}Confidentialité & cookies{% elif lang == 'it' %}Privacy e cookie{% else %}Privacy & cookies{% endif %}</a>
+        <button type="button" class="cookie-settings-btn">{% if lang == 'fr' %}Gérer les cookies{% elif lang == 'it' %}Gestisci cookie{% else %}Manage cookies{% endif %}</button>
+      </div>
       <a class="hidden-guide-link" href="{{ url_for('guide', lang=lang) }}" aria-label="Guide séjour">guid</a>
     </div>
   </footer>
+
+  <div class="cookie-banner" data-cookie-banner hidden>
+    <p>
+      {% if lang == 'fr' %}
+        Ce site utilise uniquement des cookies nécessaires au fonctionnement et à la mémorisation de votre choix de consentement.
+      {% elif lang == 'it' %}
+        Questo sito utilizza solo cookie necessari al funzionamento e alla memorizzazione della tua scelta di consenso.
+      {% else %}
+        This site only uses cookies required for operation and to remember your consent choice.
+      {% endif %}
+    </p>
+    <div class="cookie-actions">
+      <button type="button" class="btn btn-primary" data-cookie-accept>
+        {% if lang == 'fr' %}Accepter{% elif lang == 'it' %}Accetta{% else %}Accept{% endif %}
+      </button>
+      <button type="button" class="btn btn-ghost cookie-decline" data-cookie-decline>
+        {% if lang == 'fr' %}Refuser{% elif lang == 'it' %}Rifiuta{% else %}Decline{% endif %}
+      </button>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>

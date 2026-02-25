@@ -69,6 +69,18 @@ body {
   flex-wrap: wrap;
 }
 
+.nav-toggle {
+  display: none;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: rgba(12, 43, 69, 0.45);
+  color: #ecf7ff;
+  border-radius: 10px;
+  padding: 0.42rem 0.7rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
 .main-nav a,
 .lang-btn {
   color: #ecf7ff;
@@ -143,6 +155,15 @@ body {
   color: #f0faff;
 }
 
+.poet-quote {
+  margin: 0.9rem auto 0;
+  max-width: 760px;
+  font-size: clamp(0.98rem, 2.1vw, 1.2rem);
+  color: #f5fcff;
+  font-style: italic;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
+}
+
 .hero-actions {
   margin-top: 1.7rem;
   display: flex;
@@ -161,6 +182,9 @@ body {
   padding: 0.75rem 1.25rem;
   font-weight: 700;
   transition: background-color 0.2s ease;
+  border: none;
+  background: transparent;
+  cursor: pointer;
 }
 
 .btn-airbnb {
@@ -184,6 +208,7 @@ body {
 }
 
 .btn-ghost {
+  background: transparent;
   color: #f3fbff;
   border: 1px solid rgba(255, 255, 255, 0.75);
 }
@@ -473,6 +498,70 @@ h3 {
   margin: 0;
 }
 
+.footer-legal-wrap {
+  justify-content: space-between;
+}
+
+.footer-links {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: #d8ecf8;
+  text-decoration: none;
+  font-size: 0.92rem;
+}
+
+.cookie-settings-btn {
+  border: 1px solid rgba(216, 236, 248, 0.75);
+  background: transparent;
+  color: #d8ecf8;
+  border-radius: 999px;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.cookie-banner {
+  position: fixed;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  z-index: 60;
+  width: min(920px, 94%);
+  background: rgba(16, 41, 66, 0.96);
+  color: #eff8ff;
+  border: 1px solid rgba(212, 234, 247, 0.28);
+  border-radius: 14px;
+  padding: 0.9rem;
+  box-shadow: 0 10px 28px rgba(12, 27, 43, 0.35);
+  display: grid;
+  gap: 0.75rem;
+}
+
+.cookie-banner p {
+  margin: 0;
+  font-size: 0.92rem;
+}
+
+.cookie-actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.cookie-banner .btn {
+  width: auto;
+}
+
+.cookie-decline {
+  color: #eff8ff;
+  border-color: rgba(239, 248, 255, 0.7);
+}
+
 .hidden-guide-link {
   color: rgba(200, 222, 235, 0.22);
   text-decoration: none;
@@ -514,9 +603,61 @@ h3 {
 
 @media (max-width: 980px) {
   .nav-wrap {
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     align-items: flex-start;
     padding: 0.8rem 0;
+  }
+
+  .brand img {
+    height: clamp(64px, 14vw, 82px);
+  }
+
+  .brand-name {
+    font-size: clamp(1rem, 3.8vw, 1.35rem);
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+  }
+
+  .main-nav,
+  .lang-switch {
+    display: none;
+    width: 100%;
+  }
+
+  .site-header.nav-open .main-nav,
+  .site-header.nav-open .lang-switch {
+    display: flex;
+  }
+
+  .site-header.nav-open .main-nav {
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-top: 0.25rem;
+  }
+
+  .site-header.nav-open {
+    background: linear-gradient(to bottom, rgba(0, 26, 53, 0.96), rgba(0, 26, 53, 0.76));
+  }
+
+  .site-header.nav-open .main-nav a {
+    display: block;
+    width: 100%;
+    padding: 0.45rem 0.15rem;
+  }
+
+  .site-header.nav-open .lang-switch {
+    margin-top: 0.3rem;
+  }
+
+  .main-nav a,
+  .lang-btn {
+    font-size: 0.92rem;
   }
 
   .split,
@@ -533,7 +674,7 @@ h3 {
   }
 
   .hero {
-    min-height: 74vh;
+    min-height: 72vh;
     background-position: center 38%;
     background-size: 130% auto;
   }
@@ -544,5 +685,107 @@ h3 {
 
   .guide-sections {
     grid-template-columns: 1fr;
+  }
+
+  .hero-content {
+    padding: 7.2rem 0 3.3rem;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .hero-actions {
+    width: 100%;
+  }
+}
+
+@media (max-width: 620px) {
+  .container {
+    width: min(1140px, 94%);
+  }
+
+  .hero-content {
+    padding-top: 8rem;
+  }
+
+  h3 {
+    margin-bottom: 0.75rem;
+  }
+
+  .section {
+    padding: 2.5rem 0;
+  }
+
+  .card,
+  .feature-card {
+    padding: 0.9rem;
+  }
+
+  .house-photo img,
+  .scenic-card img {
+    height: 230px;
+  }
+
+  .hero h2 {
+    font-size: clamp(2.35rem, 13vw, 3.1rem);
+  }
+
+  .hero-kicker {
+    font-size: clamp(1.4rem, 8vw, 2.15rem);
+  }
+
+  .poet-quote {
+    font-size: 0.95rem;
+  }
+
+  .carousel-btn {
+    width: 34px;
+    height: 34px;
+    font-size: 1rem;
+  }
+
+  .site-footer .container {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .footer-legal-wrap {
+    align-items: center;
+  }
+
+  .cookie-banner {
+    width: min(920px, 96%);
+    bottom: 10px;
+    padding: 0.75rem;
+  }
+
+  .cookie-banner .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 430px) {
+  .hero-content {
+    padding-top: 8.6rem;
+  }
+
+  .hero {
+    min-height: 68vh;
+  }
+
+  .btn {
+    padding: 0.7rem 0.95rem;
+    font-size: 0.95rem;
+  }
+
+  .main-nav a,
+  .lang-btn {
+    font-size: 0.88rem;
+  }
+
+  .airbnb-logo {
+    width: 16px;
+    height: 16px;
   }
 }

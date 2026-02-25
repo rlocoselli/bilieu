@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{{ content.meta_title }} · {{ guide.title }}</title>
+  <title>{{ content.meta_title }} · {{ environment.title }}</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
 </head>
 <body>
@@ -24,11 +24,11 @@
         <a href="{{ url_for('bus', lang=lang) }}">{{ content.nav.bus }}</a>
         <a href="{{ url_for('environment', lang=lang) }}">{{ content.nav.environment }}</a>
         <a href="{{ url_for('guide', lang=lang) }}">{% if lang == 'fr' %}Guide{% elif lang == 'it' %}Guida{% else %}Guide{% endif %}</a>
-        <a href="{{ url_for('index', lang=lang) }}#contact">{{ content.nav.contact }}</a>
+        <a href="{{ url_for('privacy', lang=lang) }}">{% if lang == 'fr' %}Confidentialité{% elif lang == 'it' %}Privacy{% else %}Privacy{% endif %}</a>
       </nav>
       <div class="lang-switch">
         {% for item in supported_langs %}
-          <a class="lang-btn {% if item == lang %}active{% endif %}" href="{{ url_for('guide', lang=item) }}">{{ item|upper }}</a>
+          <a class="lang-btn {% if item == lang %}active{% endif %}" href="{{ url_for('environment', lang=item) }}">{{ item|upper }}</a>
         {% endfor %}
       </div>
     </div>
@@ -38,31 +38,15 @@
     <section class="hero hero-small">
       <div class="hero-overlay"></div>
       <div class="container hero-content">
-        <h2>{{ guide.title }}</h2>
-        <p class="hero-subtitle">{{ guide.intro }}</p>
-        <div class="hero-actions guide-actions">
-          <a class="btn btn-primary btn-airbnb" href="{{ content.house.airbnb_url }}" target="_blank" rel="noopener noreferrer">
-            <img class="airbnb-logo" src="{{ url_for('static', filename='images/airbnb.svg') }}" alt="" aria-hidden="true" />
-            <span>{{ content.house.airbnb_label }}</span>
-          </a>
-          {% if lang == "fr" %}
-            <a class="btn btn-primary" href="{{ url_for('static', filename='docs/bilieu-welcome-guide.pdf') }}" target="_blank" rel="noopener noreferrer">Ouvrir le PDF complet</a>
-            <a class="btn btn-ghost" href="{{ url_for('static', filename='docs/bilieu-welcome-guide.pdf') }}" download>Télécharger le PDF</a>
-          {% elif lang == "it" %}
-            <a class="btn btn-primary" href="{{ url_for('static', filename='docs/bilieu-welcome-guide.pdf') }}" target="_blank" rel="noopener noreferrer">Apri il PDF completo</a>
-            <a class="btn btn-ghost" href="{{ url_for('static', filename='docs/bilieu-welcome-guide.pdf') }}" download>Scarica il PDF</a>
-          {% else %}
-            <a class="btn btn-primary" href="{{ url_for('static', filename='docs/bilieu-welcome-guide.pdf') }}" target="_blank" rel="noopener noreferrer">Open full PDF</a>
-            <a class="btn btn-ghost" href="{{ url_for('static', filename='docs/bilieu-welcome-guide.pdf') }}" download>Download PDF</a>
-          {% endif %}
-        </div>
+        <h2>{{ environment.title }}</h2>
+        <p class="hero-subtitle">{{ environment.intro }}</p>
       </div>
     </section>
 
     <section class="section paper">
       <div class="container">
         <div class="feature-grid guide-kpis">
-          {% for stat in guide.kpis %}
+          {% for stat in environment.kpis %}
             <article class="feature-card">
               <p class="stat-label">{{ stat.label }}</p>
               <p class="stat-value">{{ stat.value }}</p>
@@ -74,7 +58,7 @@
 
     <section class="section">
       <div class="container guide-sections">
-        {% for section in guide.sections %}
+        {% for section in environment.sections %}
           <article class="card guide-card">
             <h3>{{ section.title }}</h3>
             <ul>
