@@ -193,8 +193,14 @@
           <p>{{ content.contact.text }}</p>
         </div>
         <div class="contact-actions">
-          <a class="btn btn-light" href="{{ whatsapp_link }}" target="_blank" rel="noopener noreferrer">{{ content.contact.whatsapp_label }}</a>
-          <a class="btn btn-light" href="{{ email_link }}">{{ content.contact.email_label }}</a>
+          <a class="btn btn-light" href="{{ whatsapp_link }}" target="_blank" rel="noopener noreferrer">
+            <img class="contact-icon" src="{{ url_for('static', filename='images/whatsapp.svg') }}" alt="" aria-hidden="true" />
+            <span>{{ content.contact.whatsapp_label }}</span>
+          </a>
+          <a class="btn btn-light" href="{{ email_link }}">
+            <span aria-hidden="true">✉️</span>
+            <span>{{ content.contact.email_label }}</span>
+          </a>
         </div>
       </div>
     </section>

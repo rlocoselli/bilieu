@@ -226,6 +226,12 @@ body {
   display: block;
 }
 
+.contact-icon {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
 .btn-primary {
   background: var(--teal);
   color: #f6fdff;
