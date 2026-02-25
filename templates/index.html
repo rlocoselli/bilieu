@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ content.meta_title }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <h1 class="brand">
+        <a href="{{ url_for('index', lang=lang) }}#home" aria-label="Bilieu">
+          <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Bilieu" />
+          <span class="brand-name">BILIEU</span>
+        </a>
+      </h1>
+      <nav class="main-nav">
+        <a href="#home">Accueil</a>
+        <a href="#house">{{ content.nav.house }}</a>
+        <a href="{{ url_for('house_photos', lang=lang) }}">{{ content.nav.house_photos }}</a>
+        <a href="#services">{{ content.nav.services }}</a>
+        <a href="#beauties">{{ content.nav.beauties }}</a>
+        <a href="#contact">{{ content.nav.contact }}</a>
+      </nav>
+      <div class="lang-switch">
+        {% for item in supported_langs %}
+          <a class="lang-btn {% if item == lang %}active{% endif %}" href="/?lang={{ item }}">{{ item|upper }}</a>
+        {% endfor %}
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <p class="hero-kicker">Bienvenue à</p>
+        <h2>Bilieu</h2>
+        <p class="hero-subtitle">{{ content.hero.subtitle }}</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary btn-airbnb" href="{{ content.house.airbnb_url }}" target="_blank" rel="noopener noreferrer">
+            <img class="airbnb-logo" src="{{ url_for('static', filename='images/airbnb.svg') }}" alt="" aria-hidden="true" />
+            <span>{{ content.house.airbnb_label }}</span>
+          </a>
+          <a class="btn btn-ghost" href="#contact">{{ content.contact.title }}</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="house" class="section paper">
+      <div class="container split">
+        <div>
+          <h3>{{ content.house.title }}</h3>
+          <p>{{ content.house.text }}</p>
+          <a class="btn btn-primary btn-airbnb" href="{{ content.house.airbnb_url }}" target="_blank" rel="noopener noreferrer">
+            <img class="airbnb-logo" src="{{ url_for('static', filename='images/airbnb.svg') }}" alt="" aria-hidden="true" />
+            <span>{{ content.house.airbnb_label }}</span>
+          </a>
+        </div>
+
+        <div class="carousel framed" data-carousel>
+          <button class="carousel-btn prev" type="button" aria-label="Previous">❮</button>
+          <div class="carousel-track-wrapper">
+            <div class="carousel-track">
+              {% for image in carousel_images %}
+                <figure class="carousel-slide {% if loop.first %}active{% endif %}">
+                  <img src="{{ url_for('static', filename=image.src) }}" alt="{{ image.alt }}" loading="lazy" />
+                </figure>
+              {% endfor %}
+            </div>
+          </div>
+          <button class="carousel-btn next" type="button" aria-label="Next">❯</button>
+          <div class="carousel-dots">
+            {% for image in carousel_images %}
+              <button class="dot {% if loop.first %}active{% endif %}" type="button" aria-label="Slide {{ loop.index }}"></button>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="accommodation" class="section">
+      <div class="container">
+        <h3>{{ content.stay_details.title }}</h3>
+        <div class="feature-grid stay-stats">
+          {% for stat in content.stay_details.stats %}
+            <article class="feature-card">
+              <p class="stat-label">{{ stat.label }}</p>
+              <p class="stat-value">{{ stat.value }}</p>
+            </article>
+          {% endfor %}
+        </div>
+
+        <div class="grid-two stay-cards">
+          {% for card in content.stay_details.cards %}
+            <article class="card">
+              <h4>{{ card.title }}</h4>
+              <ul>
+                {% for item in card["items"] %}
+                  <li>{{ item }}</li>
+                {% endfor %}
+              </ul>
+            </article>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section">
+      <div class="container">
+        <h3>{{ content.services.title }}</h3>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <span class="feature-icon">🛏️</span>
+            <h4>{{ content.services.home_services_title }}</h4>
+            <p>{{ content.services.home_services[0] }}</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-icon">🛁</span>
+            <h4>{{ content.pdf_info.cards[3].title }}</h4>
+            <p>{{ content.pdf_info.cards[3].items[0] }}</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-icon">🥾</span>
+            <h4>{{ content.beauties.title }}</h4>
+            <p>{{ content.beauties.text }}</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="beauties" class="section section-blue">
+      <div class="container">
+        <h3>{{ content.beauties.title }}</h3>
+        <div class="grid-two scenic-grid">
+          <article class="scenic-card">
+            <img src="{{ url_for('static', filename=carousel_images[0].src) }}" alt="{{ carousel_images[0].alt }}" loading="lazy" />
+            <div class="scenic-content">
+              <h4>{{ content.beauties.title }}</h4>
+              <p>{{ content.beauties.text }}</p>
+            </div>
+          </article>
+          <article class="scenic-card">
+            <img src="{{ url_for('static', filename=carousel_images[1].src) }}" alt="{{ carousel_images[1].alt }}" loading="lazy" />
+            <div class="scenic-content">
+              <h4>{{ content.services.markets_title }}</h4>
+              <p>{{ content.services.markets[0] }}</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="pdf-info" class="section paper">
+      <div class="container">
+        <h3>{{ content.pdf_info.title }}</h3>
+        <div class="grid-two">
+          {% for card in content.pdf_info.cards %}
+            <article class="card">
+              <h4>{{ card.title }}</h4>
+              <ul>
+                {% for item in card["items"] %}
+                  <li>{{ item }}</li>
+                {% endfor %}
+              </ul>
+            </article>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section section-blue contact-band">
+      <div class="container contact-grid">
+        <div>
+          <h3>{{ content.contact.title }}</h3>
+          <p>{{ content.contact.text }}</p>
+        </div>
+        <div class="contact-actions">
+          <a class="btn btn-light" href="{{ whatsapp_link }}" target="_blank" rel="noopener noreferrer">{{ content.contact.whatsapp_label }}</a>
+          <a class="btn btn-light" href="{{ email_link }}">{{ content.contact.email_label }}</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© Bilieu - Lac de Paladru</p>
+      <a class="hidden-guide-link" href="{{ url_for('guide', lang=lang) }}" aria-label="Guide séjour">guid</a>
+    </div>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

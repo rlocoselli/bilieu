@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ content.meta_title }} · {{ content.house_gallery.title }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <h1 class="brand">
+        <a href="{{ url_for('index', lang=lang) }}#home" aria-label="Bilieu">
+          <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Bilieu" />
+          <span class="brand-name">BILIEU</span>
+        </a>
+      </h1>
+      <nav class="main-nav">
+        <a href="{{ url_for('index', lang=lang) }}#home">Accueil</a>
+        <a href="{{ url_for('index', lang=lang) }}#house">{{ content.nav.house }}</a>
+        <a href="{{ url_for('house_photos', lang=lang) }}">{{ content.nav.house_photos }}</a>
+        <a href="{{ url_for('index', lang=lang) }}#services">{{ content.nav.services }}</a>
+        <a href="{{ url_for('index', lang=lang) }}#beauties">{{ content.nav.beauties }}</a>
+        <a href="{{ url_for('index', lang=lang) }}#contact">{{ content.nav.contact }}</a>
+      </nav>
+      <div class="lang-switch">
+        {% for item in supported_langs %}
+          <a class="lang-btn {% if item == lang %}active{% endif %}" href="{{ url_for('house_photos', lang=item) }}">{{ item|upper }}</a>
+        {% endfor %}
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero hero-small">
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <h2>{{ content.house_gallery.title }}</h2>
+        <div class="hero-actions">
+          <a class="btn btn-primary btn-airbnb" href="{{ content.house.airbnb_url }}" target="_blank" rel="noopener noreferrer">
+            <img class="airbnb-logo" src="{{ url_for('static', filename='images/airbnb.ico') }}" alt="" aria-hidden="true" />
+            <span>{{ content.house.airbnb_label }}</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section paper">
+      <div class="container">
+        <h3>{{ content.house_gallery.title }}</h3>
+        <div class="house-gallery">
+          {% for image in house_images %}
+            <figure class="house-photo">
+              <img src="{{ url_for('static', filename=image.src) }}" alt="{{ image.alt }}" loading="lazy" />
+            </figure>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© Bilieu - Lac de Paladru</p>
+      <a class="hidden-guide-link" href="{{ url_for('guide', lang=lang) }}" aria-label="Guide séjour">guid</a>
+    </div>
+  </footer>
+</body>
+</html>

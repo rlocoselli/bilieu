@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ content.meta_title }} · {{ guide.title }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <h1 class="brand">
+        <a href="{{ url_for('index', lang=lang) }}#home" aria-label="Bilieu">
+          <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Bilieu" />
+          <span class="brand-name">BILIEU</span>
+        </a>
+      </h1>
+      <nav class="main-nav">
+        <a href="{{ url_for('index', lang=lang) }}#home">Accueil</a>
+        <a href="{{ url_for('index', lang=lang) }}#house">{{ content.nav.house }}</a>
+        <a href="{{ url_for('house_photos', lang=lang) }}">{{ content.nav.house_photos }}</a>
+        <a href="{{ url_for('index', lang=lang) }}#contact">{{ content.nav.contact }}</a>
+      </nav>
+      <div class="lang-switch">
+        {% for item in supported_langs %}
+          <a class="lang-btn {% if item == lang %}active{% endif %}" href="{{ url_for('guide', lang=item) }}">{{ item|upper }}</a>
+        {% endfor %}
+      </div>
+    </div>
+  </header>
+
+  <main class="guide-page">
+    <section class="hero hero-small">
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <h2>{{ guide.title }}</h2>
+        <p class="hero-subtitle">{{ guide.intro }}</p>
+        <div class="hero-actions guide-actions">
+          <a class="btn btn-primary btn-airbnb" href="{{ content.house.airbnb_url }}" target="_blank" rel="noopener noreferrer">
+            <img class="airbnb-logo" src="{{ url_for('static', filename='images/airbnb.ico') }}" alt="" aria-hidden="true" />
+            <span>{{ content.house.airbnb_label }}</span>
+          </a>
+          {% if lang == "fr" %}
+            <a class="btn btn-primary" href="{{ url_for('static', filename='docs/bilieu-welcome-guide.pdf') }}" target="_blank" rel="noopener noreferrer">Ouvrir le PDF complet</a>
+            <a class="btn btn-ghost" href="{{ url_for('static', filename='docs/bilieu-welcome-guide.pdf') }}" download>Télécharger le PDF</a>
+          {% elif lang == "it" %}
+            <a class="btn btn-primary" href="{{ url_for('static', filename='docs/bilieu-welcome-guide.pdf') }}" target="_blank" rel="noopener noreferrer">Apri il PDF completo</a>
+            <a class="btn btn-ghost" href="{{ url_for('static', filename='docs/bilieu-welcome-guide.pdf') }}" download>Scarica il PDF</a>
+          {% else %}
+            <a class="btn btn-primary" href="{{ url_for('static', filename='docs/bilieu-welcome-guide.pdf') }}" target="_blank" rel="noopener noreferrer">Open full PDF</a>
+            <a class="btn btn-ghost" href="{{ url_for('static', filename='docs/bilieu-welcome-guide.pdf') }}" download>Download PDF</a>
+          {% endif %}
+        </div>
+      </div>
+    </section>
+
+    <section class="section paper">
+      <div class="container">
+        <div class="feature-grid guide-kpis">
+          {% for stat in guide.kpis %}
+            <article class="feature-card">
+              <p class="stat-label">{{ stat.label }}</p>
+              <p class="stat-value">{{ stat.value }}</p>
+            </article>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container guide-sections">
+        {% for section in guide.sections %}
+          <article class="card guide-card">
+            <h3>{{ section.title }}</h3>
+            <ul>
+              {% for item in section["items"] %}
+                <li>{{ item }}</li>
+              {% endfor %}
+            </ul>
+          </article>
+        {% endfor %}
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© Bilieu - Lac de Paladru</p>
+    </div>
+  </footer>
+</body>
+</html>
