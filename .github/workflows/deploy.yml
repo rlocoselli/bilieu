@@ -1,4 +1,4 @@
-name: Deploy GrenobleSki
+name: Deploy Bilieu
 
 on:
   workflow_dispatch:
