@@ -77,8 +77,66 @@ if (cookieBanner) {
 
 const header = document.querySelector('.site-header');
 const navToggle = document.querySelector('.nav-toggle');
+const tabsGroups = document.querySelectorAll('[data-tabs]');
+
+tabsGroups.forEach((group) => {
+  const tabButtons = Array.from(group.querySelectorAll('[data-tab-btn]'));
+  const tabPanels = Array.from(group.querySelectorAll('[data-tab-panel]'));
+
+  if (!tabButtons.length || !tabPanels.length) return;
+
+  const setActiveTab = (nextIndex) => {
+    tabButtons.forEach((button, index) => {
+      const isActive = index === nextIndex;
+      button.classList.toggle('active', isActive);
+      button.setAttribute('aria-selected', String(isActive));
+      if (isActive) {
+        button.focus();
+      }
+    });
+
+    tabPanels.forEach((panel, index) => {
+      panel.hidden = index !== nextIndex;
+    });
+  };
+
+  tabButtons.forEach((button, index) => {
+    button.addEventListener('click', () => setActiveTab(index));
+
+    button.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        setActiveTab((index + 1) % tabButtons.length);
+      }
+
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        setActiveTab((index - 1 + tabButtons.length) % tabButtons.length);
+      }
+
+      if (event.key === 'Home') {
+        event.preventDefault();
+        setActiveTab(0);
+      }
+
+      if (event.key === 'End') {
+        event.preventDefault();
+        setActiveTab(tabButtons.length - 1);
+      }
+    });
+  });
+});
 
 if (header && navToggle) {
+  const toggleHeaderSolid = () => {
+    header.classList.add('header-solid');
+  };
+
+  const updateHeaderOffset = () => {
+    if (header.classList.contains('nav-open')) return;
+    document.documentElement.style.setProperty('--header-offset', `${header.offsetHeight}px`);
+  };
+
   const closeNav = () => {
     header.classList.remove('nav-open');
     navToggle.setAttribute('aria-expanded', 'false');
@@ -87,6 +145,9 @@ if (header && navToggle) {
   navToggle.addEventListener('click', () => {
     const isOpen = header.classList.toggle('nav-open');
     navToggle.setAttribute('aria-expanded', String(isOpen));
+    if (!isOpen) {
+      updateHeaderOffset();
+    }
   });
 
   header.querySelectorAll('.main-nav a, .lang-switch a').forEach((link) => {
@@ -97,7 +158,12 @@ if (header && navToggle) {
     if (window.innerWidth > 980) {
       closeNav();
     }
+    updateHeaderOffset();
   });
+
+  window.addEventListener('scroll', toggleHeaderSolid, { passive: true });
+  toggleHeaderSolid();
+  updateHeaderOffset();
 }
 
 if (carousel) {

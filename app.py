@@ -51,6 +51,14 @@ GUIDE_CONTENT = {
 				],
 			},
 			{
+				"title": "Droit au passage (mais sans exagérer)",
+				"items": [
+					"L'espace devant la maison ne fait pas partie de la propriété.",
+					"Il appartient à un tiers, et aucune personne ou véhicule ne peut y stationner ou y rester.",
+					"Seul un passage rapide, prévu par la loi (servitude), est autorisé.",
+				],
+			},
+			{
 				"title": "Couchages & pièces",
 				"items": [
 					"Salon/hall : 1 canapé convertible confortable pour 2 personnes.",
@@ -64,10 +72,23 @@ GUIDE_CONTENT = {
 				"items": [
 					"Wi-Fi : Bbox–1202F156.",
 					"Smart TV connectée (Netflix, YouTube, etc.).",
-					"Poêle à granulés pilotable via application MCZ (téléphone dédié disponible).",
-					"Granulés disponibles dans le petit placard extérieur.",
 					"Lave-linge au dernier étage, dans la salle de bains.",
 					"Bureau avec écran, clavier et souris.",
+				],
+			},
+			{
+				"title": "📶 Internet et Télévision",
+				"items": [
+					"Nom du Wi-Fi : Bbox–1202F156.",
+					"Mot de passe : R1cLfqRR14heKTwCV9.",
+					"La TV est une Smart TV connectée à Internet (Netflix, YouTube, etc.).",
+				],
+			},
+			{
+				"title": "Chauffage / Poêle à granulés",
+				"items": [
+					"Un téléphone portable est disponible pour allumer et régler le poêle via l'application MCZ.",
+					"Quelques granulés sont stockés dans le petit placard extérieur.",
 				],
 			},
 			{
@@ -125,6 +146,14 @@ GUIDE_CONTENT = {
 				],
 			},
 			{
+				"title": "🌿 Right to the Land (But Not Really)",
+				"items": [
+					"The area in front of the house is not part of this property.",
+					"It belongs to a third party, and no person or vehicle may stop, remain, or park there.",
+					"Only a brief passage, as allowed by law (servitude), is permitted.",
+				],
+			},
+			{
 				"title": "Sleeping layout & rooms",
 				"items": [
 					"Hall/living room: 1 comfortable sofa bed for 2 people.",
@@ -138,10 +167,23 @@ GUIDE_CONTENT = {
 				"items": [
 					"Wi-Fi: Bbox–1202F156.",
 					"Smart TV with Internet access (Netflix, YouTube, etc.).",
-					"Pellet stove controllable with MCZ app (dedicated phone available).",
-					"Pellets available in the small outdoor cupboard.",
 					"Washing machine on the top floor (bathroom).",
 					"Office setup with monitor, keyboard and mouse.",
+				],
+			},
+			{
+				"title": "📶 Internet and Television",
+				"items": [
+					"Wi-Fi name: Bbox–1202F156.",
+					"Password: R1cLfqRR14heKTwCV9.",
+					"The TV is a Smart TV connected to the Internet (Netflix, YouTube, etc.).",
+				],
+			},
+			{
+				"title": "🔥 Heating / Pellet Stove",
+				"items": [
+					"A mobile phone is available to turn on and adjust the stove via the MCZ app.",
+					"Some pellets are stored in the small outdoor cupboard.",
 				],
 			},
 			{
@@ -199,6 +241,14 @@ GUIDE_CONTENT = {
 				],
 			},
 			{
+				"title": "🌳 Diritto al Passaggio (ma senza esagerare)",
+				"items": [
+					"Lo spazio davanti alla casa non fa parte della proprietà.",
+					"È di un terzo soggetto, e nessuna persona o veicolo può sostarvi o rimanervi.",
+					"È consentito solo un rapido passaggio, previsto dalla legge (servitù).",
+				],
+			},
+			{
 				"title": "Posti letto & camere",
 				"items": [
 					"Ingresso/soggiorno: 1 divano letto comodo per 2 persone.",
@@ -212,10 +262,23 @@ GUIDE_CONTENT = {
 				"items": [
 					"Wi-Fi: Bbox–1202F156.",
 					"Smart TV con Internet (Netflix, YouTube, ecc.).",
-					"Stufa a pellet gestibile con app MCZ (telefono dedicato disponibile).",
-					"Pellet disponibili nel piccolo armadietto esterno.",
 					"Lavatrice all'ultimo piano (bagno).",
 					"Postazione ufficio con monitor, tastiera e mouse.",
+				],
+			},
+			{
+				"title": "📶 Internet e Televisione",
+				"items": [
+					"Nome Wi-Fi: Bbox–1202F156.",
+					"Password: R1cLfqRR14heKTwCV9.",
+					"La TV è una Smart TV connessa a Internet (Netflix, YouTube, ecc.).",
+				],
+			},
+			{
+				"title": "🔥 Riscaldamento / Stufa a pellet",
+				"items": [
+					"Un telefono cellulare è disponibile per accendere e regolare la stufa tramite l'app MCZ.",
+					"Alcuni pellet sono conservati nel piccolo armadietto esterno.",
 				],
 			},
 			{

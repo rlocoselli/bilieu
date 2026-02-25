@@ -17,16 +17,16 @@
       </h1>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Menu</button>
       <nav class="main-nav" id="main-nav">
-        <a href="#home">Accueil</a>
-        <a href="#house">{{ content.nav.house }}</a>
-        <a href="{{ url_for('house_photos', lang=lang) }}">{{ content.nav.house_photos }}</a>
-        <a href="{{ url_for('history', lang=lang) }}">{{ content.nav.history }}</a>
-        <a href="{{ url_for('bus', lang=lang) }}">{{ content.nav.bus }}</a>
-        <a href="{{ url_for('environment', lang=lang) }}">{{ content.nav.environment }}</a>
-        <a href="{{ url_for('guide', lang=lang) }}">{% if lang == 'fr' %}Guide{% elif lang == 'it' %}Guida{% else %}Guide{% endif %}</a>
-        <a href="#services">{{ content.nav.services }}</a>
-        <a href="#beauties">{{ content.nav.beauties }}</a>
-        <a href="#contact">{{ content.nav.contact }}</a>
+        <a href="#home"><span class="nav-ico" aria-hidden="true">🏠</span>Accueil</a>
+        <a href="#house"><span class="nav-ico" aria-hidden="true">🏡</span>{{ content.nav.house }}</a>
+        <a href="{{ url_for('house_photos', lang=lang) }}"><span class="nav-ico" aria-hidden="true">📷</span>{{ content.nav.house_photos }}</a>
+        <a href="{{ url_for('history', lang=lang) }}"><span class="nav-ico" aria-hidden="true">📜</span>{{ content.nav.history }}</a>
+        <a href="{{ url_for('bus', lang=lang) }}"><span class="nav-ico" aria-hidden="true">🚌</span>{{ content.nav.bus }}</a>
+        <a href="{{ url_for('environment', lang=lang) }}"><span class="nav-ico" aria-hidden="true">🌿</span>{{ content.nav.environment }}</a>
+        <a href="{{ url_for('guide', lang=lang) }}"><span class="nav-ico" aria-hidden="true">🧭</span>{% if lang == 'fr' %}Guide{% elif lang == 'it' %}Guida{% else %}Guide{% endif %}</a>
+        <a href="#services"><span class="nav-ico" aria-hidden="true">🛠️</span>{{ content.nav.services }}</a>
+        <a href="#beauties"><span class="nav-ico" aria-hidden="true">🌊</span>{{ content.nav.beauties }}</a>
+        <a href="#contact"><span class="nav-ico" aria-hidden="true">✉️</span>{{ content.nav.contact }}</a>
       </nav>
       <div class="lang-switch">
         {% for item in supported_langs %}
@@ -57,7 +57,7 @@
     <section id="house" class="section paper">
       <div class="container split">
         <div>
-          <h3>{{ content.house.title }}</h3>
+          <h3 class="section-title"><span class="section-ico" aria-hidden="true">🏡</span>{{ content.house.title }}</h3>
           <p>{{ content.house.text }}</p>
           <a class="btn btn-primary btn-airbnb" href="{{ content.house.airbnb_url }}" target="_blank" rel="noopener noreferrer">
             <img class="airbnb-logo" src="{{ url_for('static', filename='images/airbnb.svg') }}" alt="" aria-hidden="true" />
@@ -88,7 +88,7 @@
 
     <section id="accommodation" class="section">
       <div class="container">
-        <h3>{{ content.stay_details.title }}</h3>
+        <h3 class="section-title"><span class="section-ico" aria-hidden="true">🛏️</span>{{ content.stay_details.title }}</h3>
         <div class="feature-grid stay-stats">
           {% for stat in content.stay_details.stats %}
             <article class="feature-card">
@@ -115,7 +115,7 @@
 
     <section id="services" class="section">
       <div class="container">
-        <h3>{{ content.services.title }}</h3>
+        <h3 class="section-title"><span class="section-ico" aria-hidden="true">🛠️</span>{{ content.services.title }}</h3>
         <div class="feature-grid">
           <article class="feature-card">
             <span class="feature-icon">🛏️</span>
@@ -138,7 +138,7 @@
 
     <section id="beauties" class="section section-blue">
       <div class="container">
-        <h3>{{ content.beauties.title }}</h3>
+        <h3 class="section-title"><span class="section-ico" aria-hidden="true">🌊</span>{{ content.beauties.title }}</h3>
         <div class="grid-two scenic-grid">
           <article class="scenic-card">
             <img src="{{ url_for('static', filename=carousel_images[0].src) }}" alt="{{ carousel_images[0].alt }}" loading="lazy" />
@@ -160,7 +160,7 @@
 
     <section id="history" class="section paper">
       <div class="container">
-        <h3>{{ content.history.title }}</h3>
+        <h3 class="section-title"><span class="section-ico" aria-hidden="true">📜</span>{{ content.history.title }}</h3>
         <div class="card">
           <p>{{ content.history.text }}</p>
           <a class="btn btn-primary" href="{{ url_for('history', lang=lang) }}">{% if lang == 'fr' %}Lire l'histoire détaillée{% elif lang == 'it' %}Leggi la storia completa{% else %}Read full history{% endif %}</a>
@@ -170,7 +170,7 @@
 
     <section id="pdf-info" class="section paper">
       <div class="container">
-        <h3>{{ content.pdf_info.title }}</h3>
+        <h3 class="section-title"><span class="section-ico" aria-hidden="true">📘</span>{{ content.pdf_info.title }}</h3>
         <div class="grid-two">
           {% for card in content.pdf_info.cards %}
             <article class="card">
@@ -189,7 +189,7 @@
     <section id="contact" class="section section-blue contact-band">
       <div class="container contact-grid">
         <div>
-          <h3>{{ content.contact.title }}</h3>
+          <h3 class="section-title"><span class="section-ico" aria-hidden="true">✉️</span>{{ content.contact.title }}</h3>
           <p>{{ content.contact.text }}</p>
         </div>
         <div class="contact-actions">

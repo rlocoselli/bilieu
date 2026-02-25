@@ -17,16 +17,16 @@
       </h1>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Menu</button>
       <nav class="main-nav" id="main-nav">
-        <a href="{{ url_for('index', lang=lang) }}#home">Accueil</a>
-        <a href="{{ url_for('index', lang=lang) }}#house">{{ content.nav.house }}</a>
-        <a href="{{ url_for('house_photos', lang=lang) }}">{{ content.nav.house_photos }}</a>
-        <a href="{{ url_for('history', lang=lang) }}">{{ content.nav.history }}</a>
-        <a href="{{ url_for('bus', lang=lang) }}">{{ content.nav.bus }}</a>
-        <a href="{{ url_for('environment', lang=lang) }}">{{ content.nav.environment }}</a>
-        <a href="{{ url_for('guide', lang=lang) }}">{% if lang == 'fr' %}Guide{% elif lang == 'it' %}Guida{% else %}Guide{% endif %}</a>
-        <a href="{{ url_for('index', lang=lang) }}#services">{{ content.nav.services }}</a>
-        <a href="{{ url_for('index', lang=lang) }}#beauties">{{ content.nav.beauties }}</a>
-        <a href="{{ url_for('index', lang=lang) }}#contact">{{ content.nav.contact }}</a>
+        <a href="{{ url_for('index', lang=lang) }}#home"><span class="nav-ico" aria-hidden="true">🏠</span>Accueil</a>
+        <a href="{{ url_for('index', lang=lang) }}#house"><span class="nav-ico" aria-hidden="true">🏡</span>{{ content.nav.house }}</a>
+        <a href="{{ url_for('house_photos', lang=lang) }}"><span class="nav-ico" aria-hidden="true">📷</span>{{ content.nav.house_photos }}</a>
+        <a href="{{ url_for('history', lang=lang) }}"><span class="nav-ico" aria-hidden="true">📜</span>{{ content.nav.history }}</a>
+        <a href="{{ url_for('bus', lang=lang) }}"><span class="nav-ico" aria-hidden="true">🚌</span>{{ content.nav.bus }}</a>
+        <a href="{{ url_for('environment', lang=lang) }}"><span class="nav-ico" aria-hidden="true">🌿</span>{{ content.nav.environment }}</a>
+        <a href="{{ url_for('guide', lang=lang) }}"><span class="nav-ico" aria-hidden="true">🧭</span>{% if lang == 'fr' %}Guide{% elif lang == 'it' %}Guida{% else %}Guide{% endif %}</a>
+        <a href="{{ url_for('index', lang=lang) }}#services"><span class="nav-ico" aria-hidden="true">🛠️</span>{{ content.nav.services }}</a>
+        <a href="{{ url_for('index', lang=lang) }}#beauties"><span class="nav-ico" aria-hidden="true">🌊</span>{{ content.nav.beauties }}</a>
+        <a href="{{ url_for('index', lang=lang) }}#contact"><span class="nav-ico" aria-hidden="true">✉️</span>{{ content.nav.contact }}</a>
       </nav>
       <div class="lang-switch">
         {% for item in supported_langs %}
@@ -52,7 +52,7 @@
 
     <section class="section paper">
       <div class="container">
-        <h3>{{ content.house_gallery.title }}</h3>
+        <h3 class="section-title"><span class="section-ico" aria-hidden="true">📷</span>{{ content.house_gallery.title }}</h3>
         <div class="house-gallery">
           {% for image in house_images %}
             <figure class="house-photo">

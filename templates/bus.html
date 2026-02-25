@@ -17,14 +17,14 @@
       </h1>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Menu</button>
       <nav class="main-nav" id="main-nav">
-        <a href="{{ url_for('index', lang=lang) }}#home">Accueil</a>
-        <a href="{{ url_for('index', lang=lang) }}#house">{{ content.nav.house }}</a>
-        <a href="{{ url_for('house_photos', lang=lang) }}">{{ content.nav.house_photos }}</a>
-        <a href="{{ url_for('history', lang=lang) }}">{{ content.nav.history }}</a>
-        <a href="{{ url_for('bus', lang=lang) }}">{{ content.nav.bus }}</a>
-        <a href="{{ url_for('environment', lang=lang) }}">{{ content.nav.environment }}</a>
-        <a href="{{ url_for('guide', lang=lang) }}">{% if lang == 'fr' %}Guide{% elif lang == 'it' %}Guida{% else %}Guide{% endif %}</a>
-        <a href="{{ url_for('privacy', lang=lang) }}">{% if lang == 'fr' %}Confidentialité{% elif lang == 'it' %}Privacy{% else %}Privacy{% endif %}</a>
+        <a href="{{ url_for('index', lang=lang) }}#home"><span class="nav-ico" aria-hidden="true">🏠</span>Accueil</a>
+        <a href="{{ url_for('index', lang=lang) }}#house"><span class="nav-ico" aria-hidden="true">🏡</span>{{ content.nav.house }}</a>
+        <a href="{{ url_for('house_photos', lang=lang) }}"><span class="nav-ico" aria-hidden="true">📷</span>{{ content.nav.house_photos }}</a>
+        <a href="{{ url_for('history', lang=lang) }}"><span class="nav-ico" aria-hidden="true">📜</span>{{ content.nav.history }}</a>
+        <a href="{{ url_for('bus', lang=lang) }}"><span class="nav-ico" aria-hidden="true">🚌</span>{{ content.nav.bus }}</a>
+        <a href="{{ url_for('environment', lang=lang) }}"><span class="nav-ico" aria-hidden="true">🌿</span>{{ content.nav.environment }}</a>
+        <a href="{{ url_for('guide', lang=lang) }}"><span class="nav-ico" aria-hidden="true">🧭</span>{% if lang == 'fr' %}Guide{% elif lang == 'it' %}Guida{% else %}Guide{% endif %}</a>
+        <a href="{{ url_for('privacy', lang=lang) }}"><span class="nav-ico" aria-hidden="true">🔐</span>{% if lang == 'fr' %}Confidentialité{% elif lang == 'it' %}Privacy{% else %}Privacy{% endif %}</a>
       </nav>
       <div class="lang-switch">
         {% for item in supported_langs %}
@@ -65,17 +65,50 @@
     </section>
 
     <section class="section">
-      <div class="container guide-sections">
-        {% for section in bus.sections %}
-          <article class="card guide-card">
-            <h3>{{ section.title }}</h3>
-            <ul>
-              {% for item in section["items"] %}
-                <li>{{ item }}</li>
-              {% endfor %}
-            </ul>
-          </article>
-        {% endfor %}
+      <div class="container guide-sections guide-sections--tabs">
+        <div class="guide-tabs" data-tabs>
+          <div class="guide-tab-list" role="tablist" aria-label="Bus tabs">
+            {% for section in bus.sections %}
+              {% set icon = '🚌' %}
+              {% if loop.index == 1 %}{% set icon = '🕒' %}{% endif %}
+              {% if loop.index == 2 %}{% set icon = '🗺️' %}{% endif %}
+              {% if loop.index == 3 %}{% set icon = '✅' %}{% endif %}
+              <button
+                type="button"
+                class="guide-tab-btn {% if loop.first %}active{% endif %}"
+                role="tab"
+                aria-selected="{% if loop.first %}true{% else %}false{% endif %}"
+                aria-controls="bus-panel-{{ loop.index0 }}"
+                id="bus-tab-{{ loop.index0 }}"
+                data-tab-btn
+              >
+                <span class="guide-tab-index">{{ loop.index }}</span>
+                <span class="guide-tab-icon" aria-hidden="true">{{ icon }}</span>
+                {{ section.title }}
+              </button>
+            {% endfor %}
+          </div>
+
+          <div class="guide-tab-panels">
+            {% for section in bus.sections %}
+              <article
+                class="card guide-card guide-tab-panel"
+                id="bus-panel-{{ loop.index0 }}"
+                role="tabpanel"
+                aria-labelledby="bus-tab-{{ loop.index0 }}"
+                {% if not loop.first %}hidden{% endif %}
+                data-tab-panel
+              >
+                <h3 class="section-title"><span class="section-ico" aria-hidden="true">🚌</span>{{ section.title }}</h3>
+                <ul>
+                  {% for item in section["items"] %}
+                    <li>{{ item }}</li>
+                  {% endfor %}
+                </ul>
+              </article>
+            {% endfor %}
+          </div>
+        </div>
       </div>
     </section>
   </main>
