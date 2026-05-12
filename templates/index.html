@@ -65,22 +65,37 @@
           </a>
         </div>
 
-        <div class="carousel framed" data-carousel>
-          <button class="carousel-btn prev" type="button" aria-label="Previous">❮</button>
-          <div class="carousel-track-wrapper">
-            <div class="carousel-track">
+        <div class="house-media-row">
+          <div class="carousel framed" data-carousel>
+            <button class="carousel-btn prev" type="button" aria-label="Previous">❮</button>
+            <div class="carousel-track-wrapper">
+              <div class="carousel-track">
+                {% for image in carousel_images %}
+                  <figure class="carousel-slide {% if loop.first %}active{% endif %}">
+                    <img src="{{ url_for('static', filename=image.src) }}" alt="{{ image.alt }}" loading="lazy" />
+                  </figure>
+                {% endfor %}
+              </div>
+            </div>
+            <button class="carousel-btn next" type="button" aria-label="Next">❯</button>
+            <div class="carousel-dots">
               {% for image in carousel_images %}
-                <figure class="carousel-slide {% if loop.first %}active{% endif %}">
-                  <img src="{{ url_for('static', filename=image.src) }}" alt="{{ image.alt }}" loading="lazy" />
-                </figure>
+                <button class="dot {% if loop.first %}active{% endif %}" type="button" aria-label="Slide {{ loop.index }}"></button>
               {% endfor %}
             </div>
           </div>
-          <button class="carousel-btn next" type="button" aria-label="Next">❯</button>
-          <div class="carousel-dots">
-            {% for image in carousel_images %}
-              <button class="dot {% if loop.first %}active{% endif %}" type="button" aria-label="Slide {{ loop.index }}"></button>
-            {% endfor %}
+
+          <div class="house-inline-video framed">
+            <div class="video-embed-wrap">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/oKIIuPLu5NI?autoplay=1&mute=1&loop=1&playlist=oKIIuPLu5NI&rel=0&modestbranding=1"
+                title="YouTube Short"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
           </div>
         </div>
       </div>
@@ -211,6 +226,7 @@
       <p>© Bilieu - Lac de Paladru</p>
       <div class="footer-links">
         <a href="{{ url_for('privacy', lang=lang) }}">{% if lang == 'fr' %}Confidentialité & cookies{% elif lang == 'it' %}Privacy e cookie{% else %}Privacy & cookies{% endif %}</a>
+        <a href="https://www.youtube.com/@Bilieu-ville" target="_blank" rel="noopener noreferrer">YouTube</a>
         <button type="button" class="cookie-settings-btn">{% if lang == 'fr' %}Gérer les cookies{% elif lang == 'it' %}Gestisci cookie{% else %}Manage cookies{% endif %}</button>
       </div>
       <a class="hidden-guide-link" href="{{ url_for('guide', lang=lang) }}" aria-label="Guide séjour">guid</a>

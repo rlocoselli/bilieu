@@ -296,6 +296,33 @@ h3 {
   color: #465f75;
 }
 
+.house-media-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+  align-items: stretch;
+}
+
+.house-inline-video {
+  background: #fffef9;
+  display: grid;
+  align-content: start;
+  gap: 0.65rem;
+}
+
+.house-inline-video .video-embed-wrap {
+  box-shadow: none;
+  border-radius: 8px;
+}
+
+.house-inline-video .video-embed-wrap iframe {
+  aspect-ratio: 16 / 10;
+}
+
+.house-inline-video .btn {
+  width: 100%;
+}
+
 .carousel {
   position: relative;
   overflow: hidden;
@@ -738,6 +765,41 @@ h3 {
   justify-content: flex-start;
 }
 
+.video-section .section-title {
+  margin-bottom: 0.95rem;
+}
+
+.video-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.75fr);
+  gap: 1rem;
+  align-items: center;
+  background: #fffef9;
+  border-radius: 20px;
+  border: 1px solid rgba(55, 80, 105, 0.15);
+  box-shadow: 0 12px 28px rgba(26, 73, 92, 0.08);
+  padding: 1rem;
+}
+
+.video-embed-wrap {
+  border-radius: 14px;
+  overflow: hidden;
+  background: #0f1b27;
+  box-shadow: 0 10px 26px rgba(18, 43, 68, 0.2);
+}
+
+.video-embed-wrap iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+}
+
+.video-copy p {
+  margin: 0 0 0.85rem;
+  color: #486378;
+}
+
 @media (max-width: 980px) {
   .nav-wrap {
     flex-direction: row;
@@ -810,6 +872,10 @@ h3 {
     display: grid;
   }
 
+  .house-media-row {
+    grid-template-columns: 1fr;
+  }
+
   .contact-actions {
     justify-content: flex-start;
   }
@@ -833,14 +899,22 @@ h3 {
   }
 
   .guide-tab-list {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    padding-bottom: 0.15rem;
-    scrollbar-width: thin;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.45rem;
   }
 
   .guide-tab-btn {
-    flex: 0 0 auto;
+    width: 100%;
+    justify-content: flex-start;
+    white-space: normal;
+    text-align: left;
+    line-height: 1.2;
+    min-height: 44px;
+  }
+
+  .video-card {
+    grid-template-columns: 1fr;
   }
 
   .hero-content {
@@ -908,6 +982,15 @@ h3 {
 
   .guide-kpis {
     grid-template-columns: 1fr;
+  }
+
+  .guide-tab-list {
+    grid-template-columns: 1fr;
+  }
+
+  .guide-tab-btn {
+    padding: 0.55rem 0.75rem;
+    font-size: 0.95rem;
   }
 
   .footer-legal-wrap {

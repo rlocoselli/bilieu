@@ -77,6 +77,7 @@
       <p>© Bilieu - Lac de Paladru</p>
       <div class="footer-links">
         <a href="{{ url_for('privacy', lang=lang) }}">{% if lang == 'fr' %}Confidentialité & cookies{% elif lang == 'it' %}Privacy e cookie{% else %}Privacy & cookies{% endif %}</a>
+        <a href="https://www.youtube.com/@Bilieu-ville" target="_blank" rel="noopener noreferrer">YouTube</a>
         <button type="button" class="cookie-settings-btn">{% if lang == 'fr' %}Gérer les cookies{% elif lang == 'it' %}Gestisci cookie{% else %}Manage cookies{% endif %}</button>
       </div>
       <a class="hidden-guide-link" href="{{ url_for('guide', lang=lang) }}" aria-label="Guide séjour">guid</a>
