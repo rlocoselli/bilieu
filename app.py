@@ -13,9 +13,8 @@ CONTACT = {
 
 CAROUSEL_IMAGES = [
     {"src": "images/hero/image.png", "alt": "Vue générale de la maison"},
-    {"src": "images/hero/image2.png", "alt": "Vue du lac"},
-    "email": "votre-email@example.com",
-}
+    {"src": "images/hero/image2.png", "alt": "Vue du lac"}
+]
 
 GUIDE_CONTENT = {
     "fr": {
