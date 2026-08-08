@@ -9,12 +9,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Install Docker
         run: |
           sudo apt-get update
+          sudo apt-get remove -y containerd.io containerd || true
           sudo apt-get install -y docker.io
           sudo systemctl enable docker
           sudo systemctl start docker
+          docker --version
 
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1.0.3
@@ -31,6 +36,15 @@ jobs:
             BRANCH="${{ github.ref_name }}"
             APP_PORT="8082"
 
+            # Vérifier et installer Docker
+            if ! command -v docker &> /dev/null; then
+              sudo apt-get update
+              sudo apt-get remove -y containerd.io containerd || true
+              sudo apt-get install -y docker.io
+              sudo systemctl enable docker
+              sudo systemctl start docker
+            fi
+
             if [ ! -d "$APP_DIR/.git" ]; then
               rm -rf "$APP_DIR"
               git clone "$REPO_URL" "$APP_DIR"
@@ -42,6 +56,7 @@ jobs:
             git checkout "$BRANCH"
             git reset --hard "origin/$BRANCH"
 
+            docker compose -f docker-compose.yml down || true
             docker compose -f docker-compose.yml up -d --build
 
             echo "⏳ Waiting for web container health"

@@ -13,3 +13,5 @@ services:
       start_period: 30s
     volumes:
       - .:/app
+    environment:
+      - FLASK_ENV=production
