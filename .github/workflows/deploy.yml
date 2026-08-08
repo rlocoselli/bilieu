@@ -35,6 +35,9 @@ jobs:
             git checkout "$BRANCH"
             git reset --hard "origin/$BRANCH"
 
+            # Installer docker-cli sur le serveur
+            sudo apt-get update && sudo apt-get install -y docker.io
+
             docker compose -f docker-compose.yml up -d --build
 
             echo "⏳ Waiting for web container health"
