@@ -36,10 +36,11 @@ jobs:
             git reset --hard "origin/$BRANCH"
 
             # Installer docker-cli sur le serveur
-            # Installer docker-cli sur le serveur
-            sudo apt-get update && sudo apt-get install -y docker.io
-            docker compose -f docker-compose.yml up -d --build
+            sudo apt-get update
+            sudo apt-get install -y docker.io
             sudo apt-get remove -y containerd.io
+            docker compose -f docker-compose.yml up -d --build
+
             echo "⏳ Waiting for web container health"
             for i in $(seq 1 60); do
               CONTAINER_STATE=$(docker inspect --format='{{.State.Status}}' bilieu-web 2>/dev/null || echo "missing")
