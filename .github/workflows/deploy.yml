@@ -9,6 +9,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Install Docker
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker.io
+          sudo systemctl enable docker
+          sudo systemctl start docker
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          sudo systemctl enable docker
+          sudo systemctl start docker
+
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -35,10 +48,6 @@ jobs:
             git checkout "$BRANCH"
             git reset --hard "origin/$BRANCH"
 
-            # Installer docker-cli sur le serveur
-            sudo apt-get update
-            sudo apt-get install -y docker.io
-            sudo apt-get remove -y containerd.io
             docker compose -f docker-compose.yml up -d --build
 
             echo "⏳ Waiting for web container health"
