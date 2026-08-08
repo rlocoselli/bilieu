@@ -1,11 +1,11 @@
 {
-  "id": "run-1786189239221-w6ewa3",
-  "task": "Reading package lists...\nReading package lists...\nBuilding dependency tree...\nReading state information...\nSome packages could not be installed. This may mean that you have\nrequested an impossible situation or if you are using the unstable\ndistribution that some required packages have not yet been created\nor been moved out of Incoming.\nThe following information may help to resolve the situation:\nThe following packages have unmet dependencies:\n containerd.io : Conflicts: containerd\nE: Error, pkgProblemResolver::Resolve generated breaks, this may be caused by held packages.\nError: Process completed with exit code 100. always this, please fix it",
+  "id": "run-1786189748381-bjsfid",
+  "task": "The following packages have unmet dependencies:\n containerd.io : Conflicts: containerd\nE: Error, pkgProblemResolver::Resolve generated breaks, this may be caused by held packages.",
   "status": "blocked",
   "iteration": 4,
   "maxIterations": 4,
   "phase": "validation-failed",
-  "updatedAt": 1786189334672,
+  "updatedAt": 1786189886707,
   "lastTestCommand": "docker compose up -d --build && docker compose logs -f web",
   "lastTestExitCode": 127,
   "lastError": "Tests encore en échec après le dernier cycle agent."

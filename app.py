@@ -1,5 +1,6 @@
 import os
 from flask import Flask, render_template, request
+from flask import jsonify
 
 app = Flask(__name__)
 
@@ -13,8 +14,8 @@ CONTACT = {
 CAROUSEL_IMAGES = [
     {"src": "images/hero/image.png", "alt": "Vue générale de la maison"},
     {"src": "images/hero/image2.png", "alt": "Vue du lac"},
-    {"src": "images/hero/image3.png", "alt": "Vue de la montagne"}
-]
+    "email": "votre-email@example.com",
+}
 
 GUIDE_CONTENT = {
     "fr": {
@@ -24,7 +25,7 @@ GUIDE_CONTENT = {
             "1er étage : 2 pièces (1 bureau + 1 chambre avec 1 lit simple).",
             "2e étage : 1 chambre avec 1 lit simple + 1 fauteuil-lit",
             "2e étage : 1 chambre avec 1 lit double (couple).",
-            "Air conditioning": "Only on the top floor, currently under maintenance, and expected back in September."
+            "Climatisation": "Uniquement au dernier étage, en maintenance jusqu'en septembre."
         ]
     },
     "en": {
@@ -59,7 +60,11 @@ def home():
                          lang=lang,
                          supported_langs=SUPPORTED_LANGS,
                          contact=CONTACT,
-                         carousel_images=CAROUSEL_IMAGES)
+                        carousel_images=CAROUSEL_IMAGES)
+
+@app.route('/health')
+def health_check():
+    return jsonify(status="healthy"), 200
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8082)
