@@ -2,6 +2,9 @@ name: Deploy Bilieu
 
 on:
   push:
+    branches:
+      - main
+
   workflow_dispatch:
 
 jobs:
@@ -16,6 +19,8 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script_stop: true
+          command_timeout: 10m
+
           script: |
             set -euo pipefail
 
@@ -23,93 +28,276 @@ jobs:
             REPO_URL="https://github.com/${{ github.repository }}.git"
             BRANCH="${{ github.ref_name }}"
             APP_PORT="8082"
+            CONTAINER_NAME="bilieu-web"
 
+            echo "======================================"
             echo "🚀 Deploying Bilieu"
+            echo "======================================"
             echo "Branch: ${BRANCH}"
+            echo "Directory: ${APP_DIR}"
+            echo
 
-            # Docker doit être installé sur le serveur Bilieu
+            # --------------------------------------
+            # Check required commands
+            # --------------------------------------
+
+            if ! command -v git >/dev/null 2>&1; then
+              echo "❌ Git is not installed."
+              exit 1
+            fi
+
             if ! command -v docker >/dev/null 2>&1; then
               echo "❌ Docker is not installed on the Bilieu server."
               exit 1
             fi
 
             if ! docker compose version >/dev/null 2>&1; then
-              echo "❌ Docker Compose v2 is not installed on the Bilieu server."
+              echo "❌ Docker Compose v2 is not installed."
               exit 1
             fi
 
             echo "🐳 Docker:"
             docker --version
             docker compose version
+            echo
 
+            # --------------------------------------
             # Clone repository if necessary
+            # --------------------------------------
+
             if [ ! -d "$APP_DIR/.git" ]; then
-              echo "📥 Cloning repository..."
-              rm -rf "$APP_DIR" || true
-              git clone "$REPO_URL" "$APP_DIR"
+              echo "📥 Repository not found. Cloning..."
+
+              rm -rf "$APP_DIR"
+
+              git clone \
+                --branch "$BRANCH" \
+                "$REPO_URL" \
+                "$APP_DIR"
             fi
 
             cd "$APP_DIR"
 
+            # --------------------------------------
+            # Update repository
+            # --------------------------------------
+
             echo "📥 Updating repository..."
+
             git remote set-url origin "$REPO_URL"
-            git fetch --all --prune
+
+            git fetch origin "$BRANCH"
+
             git checkout "$BRANCH"
+
             git reset --hard "origin/$BRANCH"
 
-            echo "🐳 Rebuilding containers..."
-            docker compose -f docker-compose.yml down || true
-            docker compose -f docker-compose.yml up -d --build
+            git clean -fd
 
-            echo "⏳ Waiting for web container..."
+            echo
+            echo "Current commit:"
+            git log -1 --oneline
+            echo
+
+            # --------------------------------------
+            # Validate Docker Compose
+            # --------------------------------------
+
+            echo "🔎 Validating docker-compose.yml..."
+
+            if ! docker compose -f docker-compose.yml config >/dev/null; then
+              echo "❌ docker-compose.yml is invalid."
+              docker compose -f docker-compose.yml config || true
+              exit 1
+            fi
+
+            echo "✅ docker-compose.yml valid."
+            echo
+
+            # --------------------------------------
+            # Stop old containers
+            # --------------------------------------
+
+            echo "🛑 Stopping previous containers..."
+
+            docker compose \
+              -f docker-compose.yml \
+              down \
+              --remove-orphans || true
+
+            # --------------------------------------
+            # Build
+            # --------------------------------------
+
+            echo
+            echo "🔨 Building Docker image..."
+
+            docker compose \
+              -f docker-compose.yml \
+              build \
+              --pull
+
+            # --------------------------------------
+            # Start
+            # --------------------------------------
+
+            echo
+            echo "🚀 Starting Bilieu..."
+
+            docker compose \
+              -f docker-compose.yml \
+              up \
+              -d \
+              --remove-orphans
+
+            echo
+            docker compose -f docker-compose.yml ps
+            echo
+
+            # --------------------------------------
+            # Wait for container
+            # --------------------------------------
+
+            echo "⏳ Waiting for container ${CONTAINER_NAME}..."
+
+            CONTAINER_READY=false
 
             for i in $(seq 1 60); do
-              CONTAINER_STATE=$(docker inspect \
-                --format='{{.State.Status}}' \
-                bilieu-web 2>/dev/null || echo "missing")
 
-              HEALTH_STATE=$(docker inspect \
-                --format='{{if .State.Health}}{{.State.Health.Status}}{{else}}none{{end}}' \
-                bilieu-web 2>/dev/null || echo "missing")
+              CONTAINER_STATE=$(
+                docker inspect \
+                  --format='{{.State.Status}}' \
+                  "$CONTAINER_NAME" \
+                  2>/dev/null || echo "missing"
+              )
 
-              RESTART_COUNT=$(docker inspect \
-                --format='{{.RestartCount}}' \
-                bilieu-web 2>/dev/null || echo "0")
+              HEALTH_STATE=$(
+                docker inspect \
+                  --format='{{if .State.Health}}{{.State.Health.Status}}{{else}}none{{end}}' \
+                  "$CONTAINER_NAME" \
+                  2>/dev/null || echo "missing"
+              )
 
-              echo "web state: ${CONTAINER_STATE}, health: ${HEALTH_STATE}, restarts: ${RESTART_COUNT}"
+              RESTART_COUNT=$(
+                docker inspect \
+                  --format='{{.RestartCount}}' \
+                  "$CONTAINER_NAME" \
+                  2>/dev/null || echo "0"
+              )
 
-              if [ "${RESTART_COUNT}" -ge 3 ] || [ "${HEALTH_STATE}" = "unhealthy" ]; then
-                echo "❌ Web container unstable."
-                docker compose -f docker-compose.yml ps || true
+              echo "Attempt ${i}/60 - state=${CONTAINER_STATE}, health=${HEALTH_STATE}, restarts=${RESTART_COUNT}"
+
+              if [ "$CONTAINER_STATE" = "exited" ]; then
+                echo
+                echo "❌ Container exited."
                 docker compose -f docker-compose.yml logs --tail=200 web || true
                 exit 1
               fi
 
-              if [ "${CONTAINER_STATE}" = "running" ]; then
-                if [ "${HEALTH_STATE}" = "healthy" ] || [ "${HEALTH_STATE}" = "none" ]; then
-                  echo "✅ Web container running."
+              if [ "$RESTART_COUNT" -ge 3 ]; then
+                echo
+                echo "❌ Container keeps restarting."
+                docker compose -f docker-compose.yml logs --tail=200 web || true
+                exit 1
+              fi
+
+              if [ "$HEALTH_STATE" = "unhealthy" ]; then
+                echo
+                echo "❌ Container is unhealthy."
+                docker compose -f docker-compose.yml logs --tail=200 web || true
+                exit 1
+              fi
+
+              if [ "$CONTAINER_STATE" = "running" ]; then
+
+                if [ "$HEALTH_STATE" = "healthy" ] || [ "$HEALTH_STATE" = "none" ]; then
+                  CONTAINER_READY=true
+                  echo "✅ Container is running."
                   break
                 fi
+
               fi
 
               sleep 2
             done
 
-            echo "⏳ Waiting for app on http://127.0.0.1:${APP_PORT}"
+            if [ "$CONTAINER_READY" != "true" ]; then
+              echo
+              echo "❌ Container did not become ready."
+
+              docker compose -f docker-compose.yml ps || true
+              docker compose -f docker-compose.yml logs --tail=200 web || true
+
+              exit 1
+            fi
+
+            # --------------------------------------
+            # HTTP test
+            # --------------------------------------
+
+            echo
+            echo "⏳ Waiting for app on port ${APP_PORT}..."
+
+            APP_READY=false
 
             for i in $(seq 1 60); do
-              if curl -fsS "http://127.0.0.1:${APP_PORT}" >/dev/null; then
-                echo "✅ Bilieu successfully deployed."
-                echo "✅ App reachable on port ${APP_PORT}"
-                exit 0
+
+              if curl \
+                --connect-timeout 3 \
+                --max-time 5 \
+                -fsS \
+                "http://127.0.0.1:${APP_PORT}/" \
+                >/dev/null; then
+
+                APP_READY=true
+                break
+
               fi
 
+              echo "Attempt ${i}/60 - application not ready yet..."
               sleep 2
             done
 
-            echo "❌ App did not become ready on port ${APP_PORT}"
+            if [ "$APP_READY" != "true" ]; then
 
-            docker compose -f docker-compose.yml ps || true
-            docker compose -f docker-compose.yml logs --tail=200 web || true
+              echo
+              echo "❌ Bilieu did not become reachable."
+              echo
 
-            exit 1
+              docker compose -f docker-compose.yml ps || true
+
+              echo
+              echo "============ LOGS ============"
+              docker compose -f docker-compose.yml logs --tail=300 web || true
+
+              exit 1
+            fi
+
+            # --------------------------------------
+            # Success
+            # --------------------------------------
+
+            echo
+            echo "======================================"
+            echo "✅ BILIEU DEPLOYED SUCCESSFULLY"
+            echo "======================================"
+            echo
+            echo "🌐 Local URL:"
+            echo "http://127.0.0.1:${APP_PORT}"
+            echo
+            echo "Container:"
+            docker ps \
+              --filter "name=${CONTAINER_NAME}" \
+              --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
+
+            # --------------------------------------
+            # Cleanup unused images
+            # --------------------------------------
+
+            echo
+            echo "🧹 Cleaning old Docker images..."
+
+            docker image prune -f || true
+
+            echo
+            echo "✅ Deployment finished."

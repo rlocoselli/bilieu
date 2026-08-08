@@ -3,22 +3,19 @@ services:
     container_name: bilieu-web
     build: .
     restart: unless-stopped
+
     ports:
       - "8082:8082"
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8082/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-    ports:
-      - "8082:8082"
+
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8082/health"]
       interval: 30s
       timeout: 10s
       retries: 3
       start_period: 30s
+
     volumes:
       - .:/app
+
     environment:
       - FLASK_ENV=production
