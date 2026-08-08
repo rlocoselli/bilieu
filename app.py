@@ -47,7 +47,8 @@ GUIDE_CONTENT = {
 				"items": [
 					"Maison strictement non-fumeurs (sanctions en cas d'odeur de cigarette).",
 					"Silence de 22h00 à 08h00 (pas de fêtes, musique forte ou regroupements).",
-					"Le terrain devant la maison appartient à un tiers : passage rapide uniquement (servitude).",
+						"Le terrain devant la maison appartient à un tiers : aucun objet, véhicule ou personne ne doit y rester, seulement un passage rapide (servitude).",
+						"Le système électrique des prises n'est pas adapté à la recharge de voitures électriques.",
 				],
 			},
 			{
@@ -65,6 +66,7 @@ GUIDE_CONTENT = {
 					"1er étage : 2 pièces (1 bureau + 1 chambre avec 1 lit simple).",
 					"2e étage : 1 chambre avec 1 lit simple + 1 fauteuil-lit.",
 					"2e étage : 1 chambre avec 1 lit double (couple).",
+						"La climatisation est uniquement au dernier étage, actuellement en maintenance, retour prévu en septembre.",
 				],
 			},
 			{
@@ -74,6 +76,7 @@ GUIDE_CONTENT = {
 					"Smart TV connectée (Netflix, YouTube, etc.).",
 					"Lave-linge au dernier étage, dans la salle de bains.",
 					"Bureau avec écran, clavier et souris.",
+						"Les prises ne sont pas prévues pour la recharge de voitures électriques.",
 				],
 			},
 			{
@@ -338,6 +341,13 @@ LEGAL_CONTENT = {
 				],
 			},
 			{
+				"title": "Contenus externes",
+				"items": [
+					"Les contenus externes comme la vidéo YouTube ne sont chargés qu'après votre action volontaire.",
+					"Cela limite les connexions automatiques à des services tiers avant votre accord.",
+				],
+			},
+			{
 				"title": "Vos droits (RGPD)",
 				"items": [
 					"Vous pouvez demander l'accès, la rectification ou la suppression de vos données transmises.",
@@ -372,6 +382,13 @@ LEGAL_CONTENT = {
 				],
 			},
 			{
+				"title": "External content",
+				"items": [
+					"External media such as the YouTube video is loaded only after you choose to open it.",
+					"This avoids automatic connections to third-party services before your consent.",
+				],
+			},
+			{
 				"title": "Your GDPR rights",
 				"items": [
 					"You may request access, correction, or deletion of data you sent.",
@@ -403,6 +420,13 @@ LEGAL_CONTENT = {
 				"items": [
 					"Viene usato un cookie locale di consenso per ricordare la tua scelta (accettato/rifiutato).",
 					"Nessun cookie pubblicitario o di tracciamento di terze parti è attivo per impostazione predefinita.",
+				],
+			},
+			{
+				"title": "Contenuti esterni",
+				"items": [
+					"I contenuti esterni come il video YouTube vengono caricati solo dopo una tua azione volontaria.",
+					"In questo modo evitiamo connessioni automatiche a servizi terzi prima del consenso.",
 				],
 			},
 			{
@@ -867,13 +891,14 @@ CONTENT = {
 						"Silence demandé de 22h00 à 08h00",
 						"Draps, couvertures et serviettes non fournis",
 						"Animaux bienvenus (merci de nettoyer après eux)",
+						"Aucun objet, véhicule ou personne ne doit rester sur le terrain du voisin; seul le passage rapide est permis.",
 					],
 				},
 			],
 		},
 		"territory_right": {
 			"title": "Droit au territoire",
-			"text": "Le terrain devant la maison n'appartient pas à cette propriété. Il appartient à un tiers: aucune personne ni aucun véhicule ne doit y stationner ou y rester. Seul un passage rapide, autorisé par la loi (servitude), est permis.",
+			"text": "Le terrain devant la maison n'appartient pas à cette propriété. Il appartient à un tiers: aucune personne, aucun véhicule et aucun objet ne doit y stationner ou y rester. Seul un passage rapide, autorisé par la loi (servitude), est permis.",
 		},
 		"services": {
 			"title": "Services & marchés à proximité",
@@ -889,7 +914,8 @@ CONTENT = {
 			"markets": [
 				"Casino Charavines – 25 Avenue du Lac, 38850 Charavines",
 				"Proxy Le Pin – 112 Route de Voiron, 38730 Le Pin",
-				"Carrefour Voiron – 21 Boulevard Edgar Kofler, 38500 Voiron",
+						"The area in front of the house belongs to a third party: no person, vehicle, or object may remain there, only brief passage (easement).",
+						"The electrical outlets are not suitable for charging electric cars.",
 			],
 		},
 		"pdf_info": {
@@ -943,6 +969,7 @@ CONTENT = {
 			"beauties": "Lake Beauty",
 			"bus": "Bus lines",
 			"environment": "Environment tips",
+						"Air conditioning is only on the top floor, currently under maintenance, and expected back in September.",
 			"history": "History of Bilieu",
 			"house": "Airbnb Home",
 			"house_photos": "House Photos",
@@ -952,6 +979,7 @@ CONTENT = {
 		},
 		"hero": {
 			"title": "Welcome to Bilieu, near Lake Paladru",
+						"The outlets are not designed for charging electric cars.",
 			"subtitle": "A simple website to discover the lake beauty, the rental house, and practical stay information.",
 		},
 		"beauties": {
@@ -1005,13 +1033,14 @@ CONTENT = {
 						"Quiet hours from 10:00 PM to 8:00 AM",
 						"Sheets, blankets and towels are not provided",
 						"Pets are welcome (please clean after them)",
+						"Nothing should be left on the neighbor's land; only brief passage is permitted.",
 					],
 				},
 			],
 		},
 		"territory_right": {
 			"title": "Right to the land",
-			"text": "The area in front of the house is not part of this property. It belongs to a third party: no person or vehicle may stop, remain, or park there. Only a brief passage allowed by law (easement) is permitted.",
+			"text": "The area in front of the house is not part of this property. It belongs to a third party: no person, vehicle, or object may stop, remain, or park there. Only a brief passage allowed by law (easement) is permitted.",
 		},
 		"services": {
 			"title": "Services & nearby markets",
@@ -1027,7 +1056,8 @@ CONTENT = {
 			"markets": [
 				"Casino Charavines – 25 Avenue du Lac, 38850 Charavines",
 				"Proxy Le Pin – 112 Route de Voiron, 38730 Le Pin",
-				"Carrefour Voiron – 21 Boulevard Edgar Kofler, 38500 Voiron",
+						"L'area davanti casa appartiene a terzi: nessuna persona, veicolo o oggetto può rimanere lì, è consentito solo il passaggio rapido (servitù).",
+						"Le prese elettriche non sono adatte alla ricarica di auto elettriche.",
 			],
 		},
 		"pdf_info": {
@@ -1081,6 +1111,7 @@ CONTENT = {
 			"beauties": "Bellezze del lago",
 			"bus": "Linee bus",
 			"environment": "Consigli ambiente",
+						"L'aria condizionata è solo all'ultimo piano, attualmente in manutenzione, rientro previsto a settembre.",
 			"history": "Storia di Bilieu",
 			"house": "Casa Airbnb",
 			"house_photos": "Foto casa",
@@ -1090,6 +1121,7 @@ CONTENT = {
 		},
 		"hero": {
 			"title": "Benvenuti a Bilieu, vicino al lago di Paladru",
+						"Le prese non sono adatte alla ricarica di auto elettriche.",
 			"subtitle": "Un sito semplice per scoprire le bellezze del lago, la casa in affitto e le informazioni utili del soggiorno.",
 		},
 		"beauties": {
@@ -1143,13 +1175,14 @@ CONTENT = {
 						"Silenzio dalle 22:00 alle 08:00",
 						"Lenzuola, coperte e asciugamani non forniti",
 						"Animali benvenuti (si prega di pulire dopo di loro)",
+						"Nessun oggetto, veicolo o persona deve restare sul terreno del vicino; è consentito solo il passaggio rapido.",
 					],
 				},
 			],
 		},
 		"territory_right": {
 			"title": "Diritto al passaggio",
-			"text": "L'area davanti alla casa non fa parte di questa proprietà. Appartiene a un terzo: nessuna persona o veicolo può sostare o fermarsi lì. È consentito solo un passaggio rapido previsto dalla legge (servitù).",
+			"text": "L'area davanti alla casa non fa parte di questa proprietà. Appartiene a un terzo: nessuna persona, veicolo o oggetto può sostare o fermarsi lì. È consentito solo un passaggio rapido previsto dalla legge (servitù).",
 		},
 		"services": {
 			"title": "Servizi e mercati vicini",

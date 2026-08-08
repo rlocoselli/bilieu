@@ -194,3 +194,26 @@ if (carousel) {
     setInterval(() => setSlide(index + 1), 5000);
   }
 }
+
+document.querySelectorAll('[data-load-video]').forEach((button) => {
+  button.addEventListener('click', () => {
+    const videoId = button.getAttribute('data-video-id');
+    const placeholder = button.closest('[data-video-placeholder]');
+
+    if (!videoId || !placeholder) return;
+
+    const frameWrap = document.createElement('div');
+    frameWrap.className = 'video-embed-wrap';
+
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1`;
+    iframe.title = 'YouTube video';
+    iframe.loading = 'lazy';
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+    iframe.setAttribute('allowfullscreen', '');
+
+    frameWrap.appendChild(iframe);
+    placeholder.replaceWith(frameWrap);
+  });
+});

@@ -40,7 +40,7 @@
     <section id="home" class="hero">
       <div class="hero-overlay"></div>
       <div class="container hero-content">
-        <p class="hero-kicker">Bienvenue à</p>
+        <p class="hero-kicker">{% if lang == 'fr' %}Bienvenue à{% elif lang == 'it' %}Benvenuti a{% else %}Welcome to{% endif %}</p>
         <h2>Bilieu</h2>
         <p class="hero-subtitle">{{ content.hero.subtitle }}</p>
         <p class="poet-quote">« La nature est là qui t'invite et qui t'aime. » — Alphonse de Lamartine</p>
@@ -51,6 +51,33 @@
           </a>
           <a class="btn btn-ghost" href="#contact">{{ content.contact.title }}</a>
         </div>
+      </div>
+    </section>
+
+    <section class="section section-spotlight">
+      <div class="container spotlight-grid">
+        <article class="spotlight-card spotlight-card--primary">
+          <p class="eyebrow">{% if lang == 'fr' %}Informations essentielles{% elif lang == 'it' %}Informazioni essenziali{% else %}Essential guest info{% endif %}</p>
+          <h3>{% if lang == 'fr' %}À lire avant l'arrivée{% elif lang == 'it' %}Da leggere prima dell'arrivo{% else %}Read before arrival{% endif %}</h3>
+          <ul class="check-list">
+            <li>{% if lang == 'fr' %}Maison non-fumeur{% elif lang == 'it' %}Casa non fumatori{% else %}Non-smoking home{% endif %}</li>
+            <li>{% if lang == 'fr' %}Silence de 22h00 à 08h00{% elif lang == 'it' %}Silenzio dalle 22:00 alle 08:00{% else %}Quiet hours from 10 PM to 8 AM{% endif %}</li>
+            <li>{% if lang == 'fr' %}Passage rapide uniquement devant la maison{% elif lang == 'it' %}Solo passaggio rapido davanti alla casa{% else %}Quick passage only in front of the house{% endif %}</li>
+            <li>{% if lang == 'fr' %}Animaux bienvenus avec nettoyage après séjour{% elif lang == 'it' %}Animali benvenuti con pulizia dopo il soggiorno{% else %}Pets welcome with cleanup after the stay{% endif %}</li>
+            <li>{% if lang == 'fr' %}Climatisation uniquement au dernier étage, en maintenance jusqu'en septembre{% elif lang == 'it' %}Aria condizionata solo all'ultimo piano, in manutenzione fino a settembre{% else %}Air conditioning only on the top floor, under maintenance until September{% endif %}</li>
+            <li>{% if lang == 'fr' %}Pas de recharge de voiture électrique sur les prises, ni d'objets sur le terrain du voisin{% elif lang == 'it' %}Niente ricarica auto elettrica sulle prese e nessun oggetto sul terreno del vicino{% else %}No EV charging on the outlets and nothing on the neighbor's land{% endif %}</li>
+          </ul>
+          <a class="btn btn-primary" href="{{ url_for('guide', lang=lang) }}">{% if lang == 'fr' %}Voir le guide complet{% elif lang == 'it' %}Vedi la guida completa{% else %}View the full guide{% endif %}</a>
+        </article>
+
+        <article class="spotlight-card">
+          <p class="eyebrow">{% if lang == 'fr' %}Vie privée & RGPD{% elif lang == 'it' %}Privacy & GDPR{% else %}Privacy & GDPR{% endif %}</p>
+          <h3>{% if lang == 'fr' %}Lecture et médias à la demande{% elif lang == 'it' %}Lettura e media su richiesta{% else %}On-demand reading and media{% endif %}</h3>
+          <p>{% if lang == 'fr' %}Le site charge seulement les contenus externes quand vous choisissez de les ouvrir, pour rester plus discret et plus respectueux de votre vie privée.{% elif lang == 'it' %}Il sito carica i contenuti esterni solo quando scegli di aprirli, per essere più discreto e rispettoso della privacy.{% else %}The site only loads external content when you choose to open it, keeping the experience more private and discreet.{% endif %}</p>
+          <div class="spotlight-actions">
+            <a class="btn btn-ghost" href="{{ url_for('privacy', lang=lang) }}">{% if lang == 'fr' %}En savoir plus{% elif lang == 'it' %}Scopri di più{% else %}Learn more{% endif %}</a>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -86,15 +113,17 @@
           </div>
 
           <div class="house-inline-video framed">
-            <div class="video-embed-wrap">
-              <iframe
-                src="https://www.youtube-nocookie.com/embed/oKIIuPLu5NI?autoplay=1&mute=1&loop=1&playlist=oKIIuPLu5NI&rel=0&modestbranding=1"
-                title="YouTube Short"
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen
-              ></iframe>
+            <div class="video-placeholder" data-video-placeholder>
+              <div class="video-placeholder__media" aria-hidden="true">▶</div>
+              <div class="video-copy">
+                <p class="eyebrow">{% if lang == 'fr' %}Vidéo de présentation{% elif lang == 'it' %}Video di presentazione{% else %}Intro video{% endif %}</p>
+                <h4>{% if lang == 'fr' %}Ouvrir la vidéo seulement si vous le souhaitez{% elif lang == 'it' %}Apri il video solo se vuoi{% else %}Open the video only if you want to{% endif %}</h4>
+                <p>{% if lang == 'fr' %}Aucun média tiers ne se charge automatiquement. Vous gardez le contrôle total sur l'ouverture du contenu externe.{% elif lang == 'it' %}Nessun media di terze parti si carica automaticamente. Hai il pieno controllo sull'apertura del contenuto esterno.{% else %}No third-party media loads automatically. You stay in control of when external content opens.{% endif %}</p>
+                <div class="spotlight-actions">
+                  <button class="btn btn-primary" type="button" data-load-video data-video-id="oKIIuPLu5NI">{% if lang == 'fr' %}Charger la vidéo{% elif lang == 'it' %}Carica video{% else %}Load video{% endif %}</button>
+                  <a class="btn btn-ghost" href="https://www.youtube.com/watch?v=oKIIuPLu5NI" target="_blank" rel="noopener noreferrer">YouTube</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
