@@ -4,8 +4,8 @@
   "status": "running",
   "iteration": 3,
   "maxIterations": 4,
-  "phase": "planning",
-  "updatedAt": 1786189035283,
+  "phase": "patch-generation",
+  "updatedAt": 1786189043855,
   "lastTestCommand": "docker compose up -d --build && docker compose logs -f web",
   "lastTestExitCode": 127
 }
