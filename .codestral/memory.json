@@ -1,9 +1,23 @@
 {
   "version": 1,
-  "updatedAt": 1786189316349,
+  "updatedAt": 1786189334614,
   "workspace": "/home/locoselli/bilieu",
   "projectType": "python",
   "recentAgentRuns": [
+    {
+      "id": "run-1786189334423-brvvyd",
+      "task": "Reading package lists...\nReading package lists...\nBuilding dependency tree...\nReading state information...\nSome packages could not be installed. This may mean that you have\nrequested an impossible situation or if you are using the unstable\ndistribution that some required packages have not yet been created\nor been moved out of Incoming.\nThe following information may help to resolve the situation:\nThe following packages have unmet dependencies:\n containerd.io : Conflicts: containerd\nE: Error, pkgProblemResolver::Resolve generated breaks, this may be caused by held packages.\nError: Process completed with exit code 100. always this, please fix it",
+      "summary": "Correction de l'installation Docker dans le workflow GitHub Actions",
+      "createdAt": 1786189334423,
+      "changes": [
+        {
+          "path": ".github/workflows/deploy.yml",
+          "action": "modify"
+        }
+      ],
+      "testCommand": "docker compose up -d --build && docker compose logs -f web",
+      "testExitCode": 127
+    },
     {
       "id": "run-1786189316197-zdpdzp",
       "task": "Reading package lists...\nReading package lists...\nBuilding dependency tree...\nReading state information...\nSome packages could not be installed. This may mean that you have\nrequested an impossible situation or if you are using the unstable\ndistribution that some required packages have not yet been created\nor been moved out of Incoming.\nThe following information may help to resolve the situation:\nThe following packages have unmet dependencies:\n containerd.io : Conflicts: containerd\nE: Error, pkgProblemResolver::Resolve generated breaks, this may be caused by held packages.\nError: Process completed with exit code 100. always this, please fix it",
@@ -361,28 +375,16 @@
       ],
       "testCommand": "docker compose up -d --build && docker compose logs -f web",
       "testExitCode": 127
-    },
-    {
-      "id": "run-1785693230210-rybe4q",
-      "task": "remove from files using .gitignore release files",
-      "summary": "Ajout de play_store_assets au .gitignore",
-      "createdAt": 1785693230210,
-      "changes": [
-        {
-          "path": ".gitignore",
-          "action": "modify"
-        }
-      ]
     }
   ],
   "lastAgentState": {
     "id": "run-1786189239221-w6ewa3",
     "task": "Reading package lists...\nReading package lists...\nBuilding dependency tree...\nReading state information...\nSome packages could not be installed. This may mean that you have\nrequested an impossible situation or if you are using the unstable\ndistribution that some required packages have not yet been created\nor been moved out of Incoming.\nThe following information may help to resolve the situation:\nThe following packages have unmet dependencies:\n containerd.io : Conflicts: containerd\nE: Error, pkgProblemResolver::Resolve generated breaks, this may be caused by held packages.\nError: Process completed with exit code 100. always this, please fix it",
     "status": "running",
-    "iteration": 3,
+    "iteration": 4,
     "maxIterations": 4,
     "phase": "validation",
-    "updatedAt": 1786189316281,
+    "updatedAt": 1786189334531,
     "lastTestCommand": "docker compose up -d --build && docker compose logs -f web",
     "lastTestExitCode": 127
   },
