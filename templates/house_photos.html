@@ -53,12 +53,19 @@
     <section class="section paper">
       <div class="container">
         <h3 class="section-title"><span class="section-ico" aria-hidden="true">📷</span>{{ content.house_gallery.title }}</h3>
-        <div class="house-gallery">
+        <div class="photo-gallery carousel framed" data-carousel>
+          <button class="carousel-btn prev" type="button" aria-label="Previous photo">❮</button>
+          <div class="carousel-track-wrapper">
           {% for image in house_images %}
-            <figure class="house-photo">
-              <img src="{{ url_for('static', filename=image.src) }}" alt="{{ image.alt }}" loading="lazy" />
+            <figure class="carousel-slide {% if loop.first %}active{% endif %}">
+              <img src="{{ url_for('static', filename=image.src) }}" alt="{{ image.alt }}" />
             </figure>
           {% endfor %}
+          </div>
+          <button class="carousel-btn next" type="button" aria-label="Next photo">❯</button>
+          <div class="carousel-dots">
+            {% for image in house_images %}<button class="dot {% if loop.first %}active{% endif %}" type="button" aria-label="Photo {{ loop.index }}"></button>{% endfor %}
+          </div>
         </div>
       </div>
     </section>

@@ -195,8 +195,7 @@ if (carousel) {
   }
 }
 
-document.querySelectorAll('[data-load-video]').forEach((button) => {
-  button.addEventListener('click', () => {
+const loadVideo = (button) => {
     const videoId = button.getAttribute('data-video-id');
     const placeholder = button.closest('[data-video-placeholder]');
 
@@ -206,7 +205,7 @@ document.querySelectorAll('[data-load-video]').forEach((button) => {
     frameWrap.className = 'video-embed-wrap';
 
     const iframe = document.createElement('iframe');
-    iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1`;
+    iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1&autoplay=1&mute=1&playsinline=1`;
     iframe.title = 'YouTube video';
     iframe.loading = 'lazy';
     iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
@@ -215,5 +214,13 @@ document.querySelectorAll('[data-load-video]').forEach((button) => {
 
     frameWrap.appendChild(iframe);
     placeholder.replaceWith(frameWrap);
-  });
+};
+
+document.querySelectorAll('[data-load-video]').forEach((button) => {
+  button.addEventListener('click', () => loadVideo(button));
+});
+
+document.querySelectorAll('[data-auto-video]').forEach((placeholder) => {
+  const button = placeholder.querySelector('[data-load-video]');
+  if (button) loadVideo(button);
 });

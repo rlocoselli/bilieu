@@ -113,12 +113,12 @@
           </div>
 
           <div class="house-inline-video framed">
-            <div class="video-placeholder" data-video-placeholder>
+            <div class="video-placeholder" data-video-placeholder data-auto-video>
               <div class="video-placeholder__media" aria-hidden="true">▶</div>
               <div class="video-copy">
                 <p class="eyebrow">{% if lang == 'fr' %}Vidéo de présentation{% elif lang == 'it' %}Video di presentazione{% else %}Intro video{% endif %}</p>
-                <h4>{% if lang == 'fr' %}Ouvrir la vidéo seulement si vous le souhaitez{% elif lang == 'it' %}Apri il video solo se vuoi{% else %}Open the video only if you want to{% endif %}</h4>
-                <p>{% if lang == 'fr' %}Aucun média tiers ne se charge automatiquement. Vous gardez le contrôle total sur l'ouverture du contenu externe.{% elif lang == 'it' %}Nessun media di terze parti si carica automaticamente. Hai il pieno controllo sull'apertura del contenuto esterno.{% else %}No third-party media loads automatically. You stay in control of when external content opens.{% endif %}</p>
+                <h4>{% if lang == 'fr' %}Découvrez la maison en vidéo{% elif lang == 'it' %}Scopri la casa in video{% else %}Discover the house on video{% endif %}</h4>
+                <p>{% if lang == 'fr' %}La vidéo démarre automatiquement sans son. Vous pouvez activer le son à tout moment.{% elif lang == 'it' %}Il video parte automaticamente senza audio. Potete attivare l'audio in qualsiasi momento.{% else %}The video starts automatically muted. You can turn the sound on at any time.{% endif %}</p>
                 <div class="spotlight-actions">
                   <button class="btn btn-primary" type="button" data-load-video data-video-id="oKIIuPLu5NI">{% if lang == 'fr' %}Charger la vidéo{% elif lang == 'it' %}Carica video{% else %}Load video{% endif %}</button>
                   <a class="btn btn-ghost" href="https://www.youtube.com/watch?v=oKIIuPLu5NI" target="_blank" rel="noopener noreferrer">YouTube</a>

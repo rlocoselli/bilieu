@@ -15,9 +15,9 @@ AIRBNB_URL = os.getenv(
     "AIRBNB_URL",
     "https://www.airbnb.fr/rooms/1402915287163928554",
 )
-CONTACT_EMAIL = os.getenv("CONTACT_EMAIL", "")
+CONTACT_EMAIL = os.getenv("CONTACT_EMAIL", "admin@audeladedonnees.fr")
 WHATSAPP_PHONE = (
-    os.getenv("WHATSAPP_PHONE", "")
+    os.getenv("WHATSAPP_PHONE", "+33 7 64 14 20 31")
     .replace("+", "")
     .replace(" ", "")
     .replace("-", "")
@@ -43,6 +43,16 @@ CAROUSEL_IMAGES = [
 ]
 
 HOUSE_IMAGES = CAROUSEL_IMAGES
+
+AIRBNB_IMAGES = [
+    {"src": "images/airbnb/airbnb-01.jpeg", "alt": "Vue de la maison et du lac"},
+    {"src": "images/airbnb/airbnb-02.jpeg", "alt": "Salon de la maison"},
+    {"src": "images/airbnb/airbnb-03.jpeg", "alt": "Chambre de la maison"},
+    {"src": "images/airbnb/airbnb-04.jpeg", "alt": "Cuisine équipée"},
+    {"src": "images/airbnb/airbnb-05.jpeg", "alt": "Vue sur le lac de Paladru"},
+    {"src": "images/airbnb/airbnb-06.jpeg", "alt": "Espace extérieur de la maison"},
+    {"src": "images/airbnb/airbnb-07.jpeg", "alt": "Détail de l'intérieur"},
+]
 
 
 def get_lang():
@@ -115,6 +125,11 @@ CONTENT = {
             "home_services": [
                 "Wi-Fi Bbox–1202F156, Smart TV, poêle à granulés pilotable avec l'application MCZ, lave-linge au dernier étage et espace bureau avec écran, clavier et souris."
             ],
+            "internet_title": "Internet & télévision",
+            "wifi_name_label": "Nom du Wi-Fi",
+            "wifi_password_label": "Mot de passe",
+            "wifi_name": "Bbox–1202F156",
+            "wifi_password": "R1cLfqRR14heKTwCV9",
             "markets_title": "Commerces à proximité",
             "markets": [
                 "Casino Charavines – 25 Avenue du Lac, 38850 Charavines. Pensez à vérifier les horaires selon la saison."
@@ -249,6 +264,11 @@ CONTENT = {
             "home_services": [
                 "Wi-Fi Bbox–1202F156, Smart TV, pellet stove controlled through the MCZ app, washing machine on the top floor and office area with monitor, keyboard and mouse."
             ],
+            "internet_title": "Internet & television",
+            "wifi_name_label": "Wi-Fi name",
+            "wifi_password_label": "Password",
+            "wifi_name": "Bbox–1202F156",
+            "wifi_password": "R1cLfqRR14heKTwCV9",
             "markets_title": "Nearby shops",
             "markets": [
                 "Casino Charavines – 25 Avenue du Lac, 38850 Charavines. Check opening hours, especially during seasonal periods."
@@ -383,6 +403,11 @@ CONTENT = {
             "home_services": [
                 "Wi-Fi Bbox–1202F156, Smart TV, stufa a pellet tramite app MCZ, lavatrice all'ultimo piano e zona ufficio con monitor, tastiera e mouse."
             ],
+            "internet_title": "Internet e televisione",
+            "wifi_name_label": "Nome Wi-Fi",
+            "wifi_password_label": "Password",
+            "wifi_name": "Bbox–1202F156",
+            "wifi_password": "R1cLfqRR14heKTwCV9",
             "markets_title": "Negozi nelle vicinanze",
             "markets": [
                 "Casino Charavines – 25 Avenue du Lac, 38850 Charavines. Verificate gli orari, soprattutto nei periodi stagionali."
@@ -927,6 +952,7 @@ GUIDE = {
                 "title": "Wi-Fi & médias",
                 "items": [
                     "Réseau Wi-Fi : Bbox–1202F156.",
+                    "Mot de passe Wi-Fi : R1cLfqRR14heKTwCV9.",
                     "La Smart TV est disponible pour vos usages habituels.",
                     "Le site ne charge les médias externes qu'à votre demande afin de limiter les chargements tiers.",
                 ],
@@ -1036,6 +1062,7 @@ GUIDE = {
                 "title": "Wi-Fi & media",
                 "items": [
                     "Wi-Fi network: Bbox–1202F156.",
+                    "Wi-Fi password: R1cLfqRR14heKTwCV9.",
                     "Smart TV is available for normal guest use.",
                     "External media on the website is loaded only on request to reduce third-party loading.",
                 ],
@@ -1145,6 +1172,7 @@ GUIDE = {
                 "title": "Wi-Fi & media",
                 "items": [
                     "Rete Wi-Fi: Bbox–1202F156.",
+                    "Password Wi-Fi: R1cLfqRR14heKTwCV9.",
                     "Smart TV disponibile per l'uso normale degli ospiti.",
                     "I media esterni del sito vengono caricati solo su richiesta per limitare i contenuti di terze parti.",
                 ],
@@ -1305,7 +1333,7 @@ def index():
 def house_photos():
     lang = get_lang()
     context = common_context(lang)
-    context["house_images"] = HOUSE_IMAGES
+    context["house_images"] = AIRBNB_IMAGES
     return render_template("house_photos.html", **context)
 
 
