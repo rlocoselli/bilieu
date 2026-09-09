@@ -64,6 +64,8 @@
             <li>{% if lang == 'fr' %}Silence de 22h00 à 08h00{% elif lang == 'it' %}Silenzio dalle 22:00 alle 08:00{% else %}Quiet hours from 10 PM to 8 AM{% endif %}</li>
             <li>{% if lang == 'fr' %}Passage rapide uniquement devant la maison{% elif lang == 'it' %}Solo passaggio rapido davanti alla casa{% else %}Quick passage only in front of the house{% endif %}</li>
             <li>{% if lang == 'fr' %}Animaux bienvenus avec nettoyage après séjour{% elif lang == 'it' %}Animali benvenuti con pulizia dopo il soggiorno{% else %}Pets welcome with cleanup after the stay{% endif %}</li>
+            <li>{% if lang == 'fr' %}Maison également habitée par les propriétaires : respectez leurs effets personnels{% elif lang == 'es' %}La casa también está habitada por sus propietarios: respete sus objetos personales{% elif lang == 'it' %}Casa abitata anche dai proprietari: rispettate i loro effetti personali{% else %}The house is also inhabited by its owners: please respect their personal belongings{% endif %}</li>
+            <li>{% if lang == 'fr' %}La propreté est fondamentale pour les prochains visiteurs{% elif lang == 'es' %}La limpieza es fundamental para los próximos visitantes{% elif lang == 'it' %}La pulizia è fondamentale per i prossimi ospiti{% else %}Keeping the house clean is essential for the next visitors{% endif %}</li>
             <li>{% if lang == 'fr' %}Climatisation uniquement au dernier étage, en maintenance jusqu'en septembre{% elif lang == 'it' %}Aria condizionata solo all'ultimo piano, in manutenzione fino a settembre{% else %}Air conditioning only on the top floor, under maintenance until September{% endif %}</li>
             <li>{% if lang == 'fr' %}Pas de recharge de voiture électrique sur les prises, ni d'objets sur le terrain du voisin{% elif lang == 'it' %}Niente ricarica auto elettrica sulle prese e nessun oggetto sul terreno del vicino{% else %}No EV charging on the outlets and nothing on the neighbor's land{% endif %}</li>
           </ul>
@@ -78,6 +80,17 @@
             <a class="btn btn-ghost" href="{{ url_for('privacy', lang=lang) }}">{% if lang == 'fr' %}En savoir plus{% elif lang == 'it' %}Scopri di più{% else %}Learn more{% endif %}</a>
           </div>
         </article>
+      </div>
+    </section>
+
+    <section class="support-teaser" aria-labelledby="support-title">
+      <div class="container support-teaser__inner">
+        <div>
+          <p class="eyebrow">{{ support.kicker }}</p>
+          <h3 id="support-title">{{ support.title }}</h3>
+          <p>{{ support.intro }}</p>
+        </div>
+        <a class="btn btn-light" href="{{ url_for('support_page', lang=lang) }}">{{ support.cta }} <span aria-hidden="true">→</span></a>
       </div>
     </section>
 

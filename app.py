@@ -1,5 +1,6 @@
 import logging
 import os
+from copy import deepcopy
 
 from flask import Flask, jsonify, render_template, request
 from werkzeug.exceptions import HTTPException
@@ -9,7 +10,7 @@ app = Flask(__name__)
 logging.basicConfig(level=logging.INFO)
 app.logger.setLevel(logging.INFO)
 
-SUPPORTED_LANGS = ["fr", "en", "it"]
+SUPPORTED_LANGS = ["fr", "en", "it", "es"]
 
 AIRBNB_URL = os.getenv(
     "AIRBNB_URL",
@@ -977,6 +978,7 @@ GUIDE = {
                 "title": "Sécurité & règles de la maison",
                 "items": [
                     "Maison strictement non-fumeurs.",
+                    "La maison est également habitée par ses propriétaires : merci de respecter leurs effets personnels et de ne pas les déplacer.",
                     "Silence demandé de 22h00 à 08h00.",
                     "Gardez les zones de passage et escaliers dégagés.",
                     "Des barrières de sécurité pour les escaliers sont disponibles si nécessaire.",
@@ -997,7 +999,7 @@ GUIDE = {
                 "items": [
                     "Check-out au plus tard à 10h00.",
                     "Vérifiez que vos effets personnels ont été récupérés.",
-                    "Laissez les espaces utilisés propres et rangés.",
+                    "La propreté est fondamentale : laissez chaque espace propre et rangé afin de présenter la maison dans un bon état aux prochains visiteurs.",
                     "Si vous voyagez avec un animal, vérifiez que les zones utilisées ont été nettoyées.",
                     "Assurez-vous de ne rien laisser dans la zone de servitude ou sur le terrain du voisin.",
                 ],
@@ -1087,6 +1089,7 @@ GUIDE = {
                 "title": "Safety & house rules",
                 "items": [
                     "Strictly non-smoking property.",
+                    "The house is also inhabited by its owners; please respect their personal belongings and do not move them.",
                     "Quiet hours from 10 PM to 8 AM.",
                     "Keep passageways and stairs clear.",
                     "Safety gates for stairs are available if needed.",
@@ -1107,7 +1110,7 @@ GUIDE = {
                 "items": [
                     "Check-out by 10:00 AM.",
                     "Make sure you have collected all personal belongings.",
-                    "Leave used areas clean and tidy.",
+                    "Keeping the house clean is essential: leave every used area clean and tidy so it is in good condition for the next visitors.",
                     "If travelling with a pet, make sure used areas have been cleaned.",
                     "Do not leave anything in the access easement or on the neighbour's land.",
                 ],
@@ -1197,6 +1200,7 @@ GUIDE = {
                 "title": "Sicurezza & regole della casa",
                 "items": [
                     "Casa rigorosamente non fumatori.",
+                    "La casa è abitata anche dai proprietari: rispettate i loro effetti personali e non spostateli.",
                     "Silenzio dalle 22:00 alle 08:00.",
                     "Tenere liberi passaggi e scale.",
                     "Sono disponibili barriere di sicurezza per le scale.",
@@ -1217,7 +1221,7 @@ GUIDE = {
                 "items": [
                     "Check-out entro le 10:00.",
                     "Controllare di aver preso tutti gli effetti personali.",
-                    "Lasciare puliti e ordinati gli spazi utilizzati.",
+                    "La pulizia è fondamentale: lasciare ogni spazio utilizzato pulito e ordinato, così la casa sarà in buone condizioni per i prossimi ospiti.",
                     "Se viaggiate con un animale, verificare che le zone utilizzate siano state pulite.",
                     "Non lasciare nulla nella servitù di accesso o sul terreno del vicino.",
                 ],
@@ -1317,16 +1321,91 @@ def common_context(lang):
     }
 
 
+SUPPORT = {
+    "fr": {
+        "title": "Soutenir les enfants atteints de cancer",
+        "intro": "Un geste choisi librement peut aider la recherche, les soins et l'accompagnement des enfants et de leurs familles.",
+        "kicker": "Une attention qui compte",
+        "cta": "Découvrir les instituts",
+        "note": "Les dons sont réalisés directement sur les sites officiels des instituts. Bilieu ne collecte aucun paiement.",
+        "institutes": [
+            {"name": "Centre Léon Bérard", "place": "Lyon", "text": "Soutenir la recherche contre le cancer et les équipes qui accompagnent les jeunes patients.", "url": "https://soutenir.centreleonberard.fr/", "label": "Donner au Centre Léon Bérard"},
+            {"name": "Gustave Roussy", "place": "Villejuif", "text": "Contribuer directement aux programmes de recherche et de soins contre les cancers de l'enfant.", "url": "https://www.gustaveroussy.fr/fr/faire-un-don-contre-les-cancers-enfants", "label": "Donner à Gustave Roussy"},
+        ],
+    },
+    "en": {
+        "title": "Support children with cancer",
+        "intro": "A freely chosen gift can help research, care and support for children and their families.",
+        "kicker": "A little care can matter",
+        "cta": "Discover the institutes",
+        "note": "Donations are made directly on each institute's official website. Bilieu does not collect payments.",
+        "institutes": [
+            {"name": "Centre Léon Bérard", "place": "Lyon", "text": "Support cancer research and the teams caring for young patients.", "url": "https://soutenir.centreleonberard.fr/", "label": "Donate to Centre Léon Bérard"},
+            {"name": "Gustave Roussy", "place": "Villejuif", "text": "Support research and care programmes dedicated to childhood cancer.", "url": "https://www.gustaveroussy.fr/fr/faire-un-don-contre-les-cancers-enfants", "label": "Donate to Gustave Roussy"},
+        ],
+    },
+    "it": {
+        "title": "Sostenere i bambini malati di cancro",
+        "intro": "Un gesto scelto liberamente può aiutare la ricerca, le cure e il sostegno ai bambini e alle loro famiglie.",
+        "kicker": "Un gesto che conta",
+        "cta": "Scopri gli istituti",
+        "note": "Le donazioni vengono effettuate direttamente sui siti ufficiali degli istituti. Bilieu non raccoglie pagamenti.",
+        "institutes": [
+            {"name": "Centre Léon Bérard", "place": "Lione", "text": "Sostenere la ricerca contro il cancro e le équipe che accompagnano i giovani pazienti.", "url": "https://soutenir.centreleonberard.fr/", "label": "Dona al Centre Léon Bérard"},
+            {"name": "Gustave Roussy", "place": "Villejuif", "text": "Contribuire ai programmi di ricerca e cura contro i tumori infantili.", "url": "https://www.gustaveroussy.fr/fr/faire-un-don-contre-les-cancers-enfants", "label": "Dona a Gustave Roussy"},
+        ],
+    },
+}
+
+# Spanish keeps the complete existing guide structure while translating the most visible and house-specific content.
+CONTENT["es"] = deepcopy(CONTENT["en"])
+CONTENT["es"].update(
+    meta_title="Domus Biliacum · Bilieu y lago de Paladru",
+    nav={
+        "house": "Casa Airbnb", "house_photos": "Fotos de la casa", "history": "Historia de Bilieu",
+        "bus": "Líneas de autobús", "environment": "Medio ambiente", "services": "Servicios y comercios",
+        "beauties": "Lago de Paladru", "contact": "Contacto",
+    },
+)
+SUPPORT["es"] = {
+    "title": "Apoyar a los niños con cáncer",
+    "intro": "Un donativo elegido libremente puede ayudar a la investigación, los cuidados y el apoyo a los niños y sus familias.",
+    "kicker": "Un gesto que cuenta", "cta": "Descubrir los institutos",
+    "note": "Las donaciones se realizan directamente en los sitios oficiales de cada instituto. Bilieu no recibe ningún pago.",
+    "institutes": [
+        {"name": "Centre Léon Bérard", "place": "Lyon", "text": "Apoya la investigación contra el cáncer y a los equipos que acompañan a los pacientes jóvenes.", "url": "https://soutenir.centreleonberard.fr/", "label": "Donar al Centre Léon Bérard"},
+        {"name": "Gustave Roussy", "place": "Villejuif", "text": "Contribuye a los programas de investigación y cuidados contra el cáncer infantil.", "url": "https://www.gustaveroussy.fr/fr/faire-un-don-contre-les-cancers-enfants", "label": "Donar a Gustave Roussy"},
+    ],
+}
+for localized_data in (HISTORY, BUS, ENVIRONMENT, GUIDE, LEGAL):
+    localized_data["es"] = deepcopy(localized_data["en"])
+GUIDE["es"].update(
+    title="Guía de la estancia",
+    intro="Todo lo necesario antes y durante la estancia: llegada, aparcamiento, acceso, habitaciones, equipamiento y normas importantes de la casa.",
+)
+GUIDE["es"]["sections"][7]["items"][1] = "La casa también está habitada por sus propietarios: respete sus objetos personales y no los mueva."
+GUIDE["es"]["sections"][-1]["items"][2] = "La limpieza es fundamental: deje cada espacio utilizado limpio y ordenado para que la casa esté en buen estado para los próximos visitantes."
+
+
 @app.route("/")
 def index():
     lang = get_lang()
     context = common_context(lang)
     context.update(
         carousel_images=CAROUSEL_IMAGES,
+        support=SUPPORT[lang],
         whatsapp_link=f"https://wa.me/{WHATSAPP_PHONE}" if WHATSAPP_PHONE else "#contact",
         email_link=f"mailto:{CONTACT_EMAIL}" if CONTACT_EMAIL else "#contact",
     )
     return render_template("index.html", **context)
+
+
+@app.route("/support")
+def support_page():
+    lang = get_lang()
+    context = common_context(lang)
+    context["support"] = SUPPORT[lang]
+    return render_template("support.html", **context)
 
 
 @app.route("/photos")

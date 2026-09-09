@@ -23,7 +23,7 @@
         <a href="{{ url_for('history', lang=lang) }}"><span class="nav-ico" aria-hidden="true">📜</span>{{ content.nav.history }}</a>
         <a href="{{ url_for('bus', lang=lang) }}"><span class="nav-ico" aria-hidden="true">🚌</span>{{ content.nav.bus }}</a>
         <a href="{{ url_for('environment', lang=lang) }}"><span class="nav-ico" aria-hidden="true">🌿</span>{{ content.nav.environment }}</a>
-        <a href="{{ url_for('guide', lang=lang) }}"><span class="nav-ico" aria-hidden="true">🧭</span>{% if lang == 'fr' %}Guide{% elif lang == 'it' %}Guida{% else %}Guide{% endif %}</a>
+        <a href="{{ url_for('guide', lang=lang) }}"><span class="nav-ico" aria-hidden="true">🧭</span>{% if lang == 'fr' %}Guide{% elif lang == 'it' %}Guida{% elif lang == 'es' %}Guía{% else %}Guide{% endif %}</a>
         <a href="{{ url_for('index', lang=lang) }}#contact"><span class="nav-ico" aria-hidden="true">✉️</span>{{ content.nav.contact }}</a>
       </nav>
       <div class="lang-switch">
