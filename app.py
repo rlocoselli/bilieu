@@ -184,7 +184,7 @@ CONTENT = {
                     "title": "Confort & équipements",
                     "items": [
                         "Wi-Fi, Smart TV, poêle à granulés MCZ, lave-linge et espace bureau équipé.",
-                        "Climatisation uniquement au dernier étage ; actuellement en maintenance jusqu'en septembre.",
+                        "Climatisation uniquement au dernier étage ; actuellement en maintenance jusqu'en decembre.",
                         "Animaux bienvenus, à condition de nettoyer après leur passage.",
                         "Draps, couvertures et serviettes non fournis.",
                     ],
@@ -323,7 +323,7 @@ CONTENT = {
                     "title": "Comfort & equipment",
                     "items": [
                         "Wi-Fi, Smart TV, MCZ pellet stove, washing machine and equipped office area.",
-                        "Air conditioning is available only on the top floor and is currently under maintenance until September.",
+                        "Air conditioning is available only on the top floor and is currently under maintenance until December.",
                         "Pets are welcome; please clean after them.",
                         "Sheets, blankets and towels are not provided.",
                     ],
