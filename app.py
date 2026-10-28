@@ -184,7 +184,7 @@ CONTENT = {
                     "title": "Confort & équipements",
                     "items": [
                         "Wi-Fi, Smart TV, poêle à granulés MCZ, lave-linge et espace bureau équipé.",
-                        "Climatisation uniquement au dernier étage ; actuellement en maintenance jusqu'en decembre.",
+                        "Climatisation uniquement au dernier étage ; contactez-nous pour confirmer sa disponibilité.",
                         "Animaux bienvenus, à condition de nettoyer après leur passage.",
                         "Draps, couvertures et serviettes non fournis.",
                     ],
@@ -323,7 +323,7 @@ CONTENT = {
                     "title": "Comfort & equipment",
                     "items": [
                         "Wi-Fi, Smart TV, MCZ pellet stove, washing machine and equipped office area.",
-                        "Air conditioning is available only on the top floor and is currently under maintenance until December.",
+                        "Air conditioning is only on the top floor; please contact us to confirm availability.",
                         "Pets are welcome; please clean after them.",
                         "Sheets, blankets and towels are not provided.",
                     ],
@@ -462,7 +462,7 @@ CONTENT = {
                     "title": "Comfort & dotazioni",
                     "items": [
                         "Wi-Fi, Smart TV, stufa a pellet MCZ, lavatrice e zona ufficio attrezzata.",
-                        "Aria condizionata solo all'ultimo piano, attualmente in manutenzione fino a settembre.",
+                        "Aria condizionata solo all'ultimo piano; contattateci per confermarne la disponibilità.",
                         "Animali benvenuti; pulire dopo il loro soggiorno.",
                         "Lenzuola, coperte e asciugamani non sono forniti.",
                     ],
@@ -963,7 +963,7 @@ GUIDE = {
                 "items": [
                     "Le poêle à granulés peut être piloté avec l'application MCZ.",
                     "La climatisation est disponible uniquement au dernier étage.",
-                    "La climatisation est actuellement en maintenance et son retour est prévu en septembre.",
+                    "Contactez-nous pour confirmer la disponibilité de la climatisation avant votre séjour.",
                 ],
             },
             {
@@ -1074,7 +1074,7 @@ GUIDE = {
                 "items": [
                     "The pellet stove can be controlled through the MCZ app.",
                     "Air conditioning is available only on the top floor.",
-                    "The air conditioning is currently under maintenance and is expected back in September.",
+                    "Please contact us to confirm air conditioning availability before your stay.",
                 ],
             },
             {
@@ -1185,7 +1185,7 @@ GUIDE = {
                 "items": [
                     "La stufa a pellet può essere controllata tramite l'app MCZ.",
                     "L'aria condizionata è disponibile solo all'ultimo piano.",
-                    "L'aria condizionata è attualmente in manutenzione e il ritorno è previsto a settembre.",
+                    "Contattateci per confermare la disponibilità dell'aria condizionata prima del soggiorno.",
                 ],
             },
             {
@@ -1385,6 +1385,230 @@ GUIDE["es"].update(
 )
 GUIDE["es"]["sections"][7]["items"][1] = "La casa también está habitada por sus propietarios: respete sus objetos personales y no los mueva."
 GUIDE["es"]["sections"][-1]["items"][2] = "La limpieza es fundamental: deje cada espacio utilizado limpio y ordenado para que la casa esté en buen estado para los próximos visitantes."
+GUIDE["es"]["kpis"] = [
+    {"label": "Entrada", "value": "15:00"},
+    {"label": "Salida", "value": "10:00"},
+    {"label": "Silencio", "value": "22:00–08:00"},
+    {"label": "Aparcamiento", "value": "Público gratuito"},
+]
+GUIDE["es"]["sections"] = [
+    {"title": "Llegada y acceso a la casa", "items": [
+        "Entrada a partir de las 15:00.", "Hay aparcamiento público gratuito en la calle.",
+        "Después de aparcar, tome el camino de hierba y grava.",
+        "Siga la valla de madera hasta la casa.",
+        "Busque el gran ventanal y la puerta de madera con cristales cuadrados.",
+    ]},
+    {"title": "Aparcamiento, vecinos y derecho de paso", "items": [
+        "No bloquee la zona frente a la casa: es un derecho de paso.",
+        "No aparque ni deje objetos en el terreno del vecino.",
+        "Respete la tranquilidad del vecindario, especialmente entre las 22:00 y las 08:00.",
+        "No está permitido cargar vehículos eléctricos en los enchufes de la casa.",
+    ]},
+    {"title": "Camas y ropa de cama", "items": [
+        "Capacidad máxima indicada: 7 personas.",
+        "Entrada y salón: sofá cama cómodo para 2 personas.",
+        "Primera planta: despacho y habitación con 1 cama individual.",
+        "Segunda planta: habitación con 1 cama individual y 1 sillón cama.",
+        "Segunda planta: otra habitación con 1 cama doble.",
+        "No se proporcionan sábanas, mantas ni toallas; tráigalas consigo.",
+    ]},
+    {"title": "Equipamiento de la casa", "items": [
+        "Red Wi-Fi: Bbox–1202F156.", "Hay una Smart TV.",
+        "Estufa de pellets controlable mediante la aplicación MCZ.",
+        "Lavadora en el baño de la última planta.",
+        "Despacho con pantalla, teclado y ratón.",
+        "Hay barreras de seguridad para las escaleras.",
+    ]},
+    {"title": "Wi-Fi y televisión", "items": [
+        "Red Wi-Fi: Bbox–1202F156.", "Contraseña Wi-Fi: R1cLfqRR14heKTwCV9.",
+        "La Smart TV está disponible para el uso habitual de los huéspedes.",
+        "Los contenidos externos del sitio web solo se cargan cuando usted los solicita.",
+    ]},
+    {"title": "Calefacción y aire acondicionado", "items": [
+        "La estufa de pellets se controla con la aplicación MCZ.",
+        "El aire acondicionado solo está en la última planta.",
+        "Contáctenos para confirmar su disponibilidad antes de la estancia.",
+    ]},
+    {"title": "Mascotas", "items": [
+        "Las mascotas son bienvenidas.",
+        "Limpie después de ellas dentro y alrededor de la casa.",
+        "Evite que molesten a los vecinos u obstaculicen las zonas de paso.",
+    ]},
+    {"title": "Seguridad y normas de la casa", "items": [
+        "Está estrictamente prohibido fumar en la casa.",
+        "Los propietarios también viven en la casa: respete sus objetos personales y no los mueva.",
+        "Se pide silencio de 22:00 a 08:00.",
+        "Mantenga libres los pasillos y las escaleras.",
+        "Hay barreras de seguridad para las escaleras si las necesita.",
+        "No cargue vehículos eléctricos en los enchufes domésticos.",
+    ]},
+    {"title": "Entorno y vida local", "items": [
+        "Respete el lago, los espacios naturales y las propiedades privadas.",
+        "Reduzca los residuos y siga las instrucciones locales de reciclaje.",
+        "Para comprar, Casino Charavines está en 25 Avenue du Lac, 38850 Charavines.",
+        "Consulte los horarios oficiales antes de usar el transporte público.",
+    ]},
+    {"title": "Antes de salir", "items": [
+        "Salida a más tardar a las 10:00.",
+        "Compruebe que ha recogido todos sus objetos personales.",
+        "Deje limpios y ordenados todos los espacios utilizados para los próximos huéspedes.",
+        "Si viaja con una mascota, limpie las zonas que haya utilizado.",
+        "No deje nada en el derecho de paso ni en el terreno del vecino.",
+    ]},
+]
+
+# Keep the arrival reminders and the full web guide in one localized source.
+GUIDE_UPDATES = {
+    "fr": {
+        "parking": [
+            "Merci de stationner uniquement sur les places publiques de la rue, près de la haie. Il n'y a pas de parking privé.",
+            "Le terrain devant la maison appartient au voisin. Le droit de passage permet de rejoindre la maison à pied, sans s'y arrêter ni y déposer d'affaires.",
+            "Pour préserver l'accès de chacun, merci de ne pas garer de voiture, même brièvement, sur ce terrain ou dans le passage.",
+            "Gardez vos animaux avec vous et ramassez leurs déjections, y compris aux abords du passage.",
+            "En cas de doute sur une place ou une limite de propriété, contactez-nous avant de vous garer.",
+        ],
+        "stove": [
+            "Un téléphone mis à disposition dans la maison permet d'allumer et de régler le poêle à granulés avec l'application MCZ.",
+            "Ouvrez l'application MCZ sur ce téléphone et ajustez la température selon votre confort. Si le poêle ne répond pas, contactez-nous plutôt que de modifier ses réglages techniques.",
+            "Quelques granulés sont stockés dans le petit placard extérieur. Merci de nous prévenir si le stock est presque épuisé.",
+        ],
+        "extras": {
+            3: ["Des jouets, des livres et un appareil à raclette sont à votre disposition ; merci de les ranger après usage."],
+            7: ["Le tableau électrique se trouve au rez-de-chaussée ; merci de ne pas toucher aux disjoncteurs et de nous contacter en cas de problème.", "Merci de respecter les affiches et espaces personnels décorés par les enfants."],
+            8: [
+                "Si besoin, la poubelle grise pour les déchets organiques se trouve à gauche, à l'entrée du chemin.",
+                "La poubelle jaune se trouve à l'entrée de la maison.",
+                "À proximité : plage du camping à environ 2 minutes à pied et plage municipale de Paladru à environ 5 minutes en voiture.",
+            ],
+            9: ["Éteignez les lumières en quittant une pièce et débranchez les câbles USB inutilisés.", "Un aspirateur est à votre disposition pour laisser la maison propre."],
+        },
+        "highlights": {
+            "parking_title": "Stationnement & droit de passage",
+            "parking_text": "Garez votre voiture sur les places publiques de la rue, près de la haie. Le terrain devant la maison appartient au voisin : empruntez-le seulement pour rejoindre la maison à pied, sans stationner ni déposer d'affaires. Merci de préserver sa tranquillité et de nous contacter en cas de doute.",
+            "stove_title": "Régler le poêle à granulés",
+            "stove_text": "Utilisez le téléphone mis à disposition dans la maison : ouvrez l'application MCZ pour allumer le poêle et ajuster la température. Des granulés sont dans le petit placard extérieur ; contactez-nous si vous avez besoin d'aide.",
+            "guide_title": "Guide complet du séjour",
+            "guide_intro": "Retrouvez ici toutes les informations pratiques de la maison. Le PDF illustré reste disponible pour les photos d'arrivée.",
+            "pdf_label": "Voir le guide PDF illustré",
+            "parking_photo": "Places publiques le long de la haie : stationnez uniquement là où le stationnement est autorisé.",
+            "path_photo": "Chemin en herbe et gravier à suivre à pied le long de la clôture en bois.",
+        },
+    },
+    "en": {
+        "parking": [
+            "Please park only in the public street spaces beside the hedge. There is no private parking.",
+            "The land in front of the house belongs to the neighbour. The right of way is for walking to the house, without stopping or leaving belongings there.",
+            "To keep access clear for everyone, please do not park a car there, even briefly, or block the path.",
+            "Please keep pets with you and clean up after them, including near the path.",
+            "If you are unsure about a parking space or property boundary, please contact us before parking.",
+        ],
+        "stove": [
+            "A phone provided in the house lets you switch on and adjust the pellet stove through the MCZ app.",
+            "Open the MCZ app on that phone and adjust the temperature to your comfort. If the stove does not respond, contact us instead of changing technical settings.",
+            "Some pellets are stored in the small outdoor cupboard. Please let us know when the supply is running low.",
+        ],
+        "extras": {
+            3: ["Toys, books and a raclette machine are available; please put them away after use."],
+            7: ["The electrical panel is on the ground floor; please leave the breakers as they are and contact us if there is a problem.", "Please respect the children's decorated posters and personal spaces."],
+            8: [
+                "If needed, the grey bin for organic waste is on the left at the entrance to the path.",
+                "The yellow bin is at the entrance to the house.",
+                "Nearby: the campsite beach is about a 2-minute walk away, and Paladru municipal beach is about a 5-minute drive away.",
+            ],
+            9: ["Turn off lights when leaving a room and unplug unused USB cables.", "A vacuum cleaner is available to help leave the house clean."],
+        },
+        "highlights": {
+            "parking_title": "Parking & right of way",
+            "parking_text": "Park in the public street spaces beside the hedge. The land in front of the house belongs to the neighbour: please cross it only on foot to reach the house, without parking or leaving belongings. Thank you for respecting their space; contact us if you are unsure.",
+            "stove_title": "Adjusting the pellet stove",
+            "stove_text": "Use the phone provided in the house. Open the MCZ app to switch on the stove and adjust the temperature. Pellets are in the small outdoor cupboard; contact us if you need help.",
+            "guide_title": "Complete guest guide",
+            "guide_intro": "All practical house information is here. The illustrated PDF is also available for arrival photos.",
+            "pdf_label": "View the illustrated PDF guide",
+            "parking_photo": "Public spaces beside the hedge: park only where parking is permitted.",
+            "path_photo": "Follow the grass and gravel path on foot beside the wooden fence.",
+        },
+    },
+    "it": {
+        "parking": [
+            "Vi preghiamo di parcheggiare solo nei posti pubblici lungo la strada, accanto alla siepe. Non c'è un parcheggio privato.",
+            "Il terreno davanti alla casa appartiene al vicino. La servitù di passaggio consente di raggiungere la casa a piedi, senza fermarsi o lasciare oggetti.",
+            "Per mantenere libero l'accesso, vi chiediamo di non parcheggiare lì, nemmeno per poco tempo, e di non bloccare il passaggio.",
+            "Tenete con voi gli animali e raccogliete le loro deiezioni, anche vicino al passaggio.",
+            "Se avete dubbi su un posto auto o sui confini della proprietà, contattateci prima di parcheggiare.",
+        ],
+        "stove": [
+            "Un telefono disponibile in casa permette di accendere e regolare la stufa a pellet tramite l'app MCZ.",
+            "Aprite l'app MCZ su quel telefono e regolate la temperatura secondo le vostre esigenze. Se la stufa non risponde, contattateci senza modificare le impostazioni tecniche.",
+            "Alcuni pellet si trovano nel piccolo armadietto esterno. Avvisateci se la scorta sta finendo.",
+        ],
+        "extras": {
+            3: ["Sono disponibili giocattoli, libri e una macchina per raclette; riponeteli dopo l'uso."],
+            7: ["Il quadro elettrico è al piano terra; non toccate gli interruttori e contattateci in caso di problemi.", "Vi preghiamo di rispettare i poster e gli spazi personali decorati dai bambini."],
+            8: [
+                "Se necessario, il bidone grigio per i rifiuti organici si trova a sinistra all'ingresso del sentiero.",
+                "Il bidone giallo si trova all'ingresso della casa.",
+                "Nelle vicinanze: spiaggia del campeggio a circa 2 minuti a piedi e spiaggia comunale di Paladru a circa 5 minuti in auto.",
+            ],
+            9: ["Spegnete le luci quando uscite da una stanza e scollegate i cavi USB inutilizzati.", "È disponibile un aspirapolvere per lasciare la casa pulita."],
+        },
+        "highlights": {
+            "parking_title": "Parcheggio e diritto di passaggio",
+            "parking_text": "Parcheggiate nei posti pubblici lungo la strada, accanto alla siepe. Il terreno davanti alla casa appartiene al vicino: attraversatelo solo a piedi per raggiungere la casa, senza sostare o lasciare oggetti. Grazie per il rispetto; contattateci in caso di dubbi.",
+            "stove_title": "Regolare la stufa a pellet",
+            "stove_text": "Usate il telefono disponibile in casa. Aprite l'app MCZ per accendere la stufa e regolare la temperatura. I pellet sono nel piccolo armadietto esterno; contattateci se serve aiuto.",
+            "guide_title": "Guida completa del soggiorno",
+            "guide_intro": "Qui trovate tutte le informazioni pratiche sulla casa. Il PDF illustrato è disponibile anche per le foto dell'arrivo.",
+            "pdf_label": "Vedi la guida PDF illustrata",
+            "parking_photo": "Posti pubblici accanto alla siepe: parcheggiate solo dove è consentito.",
+            "path_photo": "Seguite a piedi il sentiero in erba e ghiaia lungo la recinzione in legno.",
+        },
+    },
+    "es": {
+        "parking": [
+            "Por favor, aparque solo en las plazas públicas de la calle, junto al seto. No hay aparcamiento privado.",
+            "El terreno frente a la casa pertenece al vecino. El derecho de paso permite llegar a la casa a pie, sin detenerse ni dejar objetos allí.",
+            "Para mantener libre el acceso, no aparque allí, ni siquiera brevemente, ni bloquee el paso.",
+            "Mantenga a sus mascotas con usted y recoja sus excrementos, también junto al camino.",
+            "Si tiene dudas sobre una plaza o los límites de la propiedad, consúltenos antes de aparcar.",
+        ],
+        "stove": [
+            "Hay un teléfono disponible en la casa para encender y ajustar la estufa de pellets mediante la aplicación MCZ.",
+            "Abra la aplicación MCZ en ese teléfono y ajuste la temperatura a su gusto. Si la estufa no responde, contáctenos en lugar de cambiar los ajustes técnicos.",
+            "Hay algunos pellets en el pequeño armario exterior. Avísenos si quedan pocos.",
+        ],
+        "extras": {
+            3: ["Hay juguetes, libros y una máquina de raclette disponibles; guárdelos después de usarlos."],
+            7: ["El cuadro eléctrico está en la planta baja; no toque los interruptores y contáctenos si surge algún problema.", "Respete los carteles y espacios personales decorados por los niños."],
+            8: [
+                "Si lo necesita, el contenedor gris para residuos orgánicos está a la izquierda, a la entrada del camino.",
+                "El contenedor amarillo está a la entrada de la casa.",
+                "Cerca: la playa del camping está a unos 2 minutos a pie y la playa municipal de Paladru, a unos 5 minutos en coche.",
+            ],
+            9: ["Apague las luces al salir de una habitación y desconecte los cables USB que no utilice.", "Hay una aspiradora disponible para dejar la casa limpia."],
+        },
+        "highlights": {
+            "parking_title": "Aparcamiento y derecho de paso",
+            "parking_text": "Aparque en las plazas públicas de la calle, junto al seto. El terreno frente a la casa pertenece al vecino: crúcelo solo a pie para llegar a la casa, sin aparcar ni dejar objetos. Gracias por respetar su espacio; consúltenos si tiene dudas.",
+            "stove_title": "Ajustar la estufa de pellets",
+            "stove_text": "Use el teléfono disponible en la casa. Abra la aplicación MCZ para encender la estufa y ajustar la temperatura. Hay pellets en el pequeño armario exterior; contáctenos si necesita ayuda.",
+            "guide_title": "Guía completa de la estancia",
+            "guide_intro": "Aquí encontrará toda la información práctica de la casa. El PDF ilustrado también muestra fotos de la llegada.",
+            "pdf_label": "Ver la guía PDF ilustrada",
+            "parking_photo": "Plazas públicas junto al seto: aparque solo donde esté permitido.",
+            "path_photo": "Siga a pie el camino de hierba y grava junto a la valla de madera.",
+        },
+    },
+}
+
+for guide_lang, update in GUIDE_UPDATES.items():
+    guide_data = GUIDE[guide_lang]
+    guide_data["highlights"] = update["highlights"]
+    guide_data["sections"][0]["items"][1] = update["parking"][0]
+    guide_data["sections"][1]["items"] = update["parking"] + guide_data["sections"][1]["items"][2:]
+    guide_data["sections"][5]["items"][0:1] = update["stove"]
+    for section_index, extra_items in update["extras"].items():
+        guide_data["sections"][section_index]["items"].extend(extra_items)
 
 
 @app.route("/")
@@ -1393,6 +1617,7 @@ def index():
     context = common_context(lang)
     context.update(
         carousel_images=CAROUSEL_IMAGES,
+        guide=GUIDE[lang],
         support=SUPPORT[lang],
         whatsapp_link=f"https://wa.me/{WHATSAPP_PHONE}" if WHATSAPP_PHONE else "#contact",
         email_link=f"mailto:{CONTACT_EMAIL}" if CONTACT_EMAIL else "#contact",

@@ -120,6 +120,18 @@
                     <li>{{ item }}</li>
                   {% endfor %}
                 </ul>
+                {% if loop.first %}
+                  <div class="arrival-photos">
+                    <figure class="arrival-photo">
+                      <img src="{{ url_for('static', filename='images/arrival/public-parking.jpg') }}" alt="{{ guide.highlights.parking_photo }}" loading="lazy" />
+                      <figcaption>{{ guide.highlights.parking_photo }}</figcaption>
+                    </figure>
+                    <figure class="arrival-photo">
+                      <img src="{{ url_for('static', filename='images/arrival/footpath.jpg') }}" alt="{{ guide.highlights.path_photo }}" loading="lazy" />
+                      <figcaption>{{ guide.highlights.path_photo }}</figcaption>
+                    </figure>
+                  </div>
+                {% endif %}
               </article>
             {% endfor %}
           </div>

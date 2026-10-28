@@ -23,7 +23,7 @@
         <a href="{{ url_for('history', lang=lang) }}"><span class="nav-ico" aria-hidden="true">📜</span>{{ content.nav.history }}</a>
         <a href="{{ url_for('bus', lang=lang) }}"><span class="nav-ico" aria-hidden="true">🚌</span>{{ content.nav.bus }}</a>
         <a href="{{ url_for('environment', lang=lang) }}"><span class="nav-ico" aria-hidden="true">🌿</span>{{ content.nav.environment }}</a>
-        <a href="{{ url_for('guide', lang=lang) }}"><span class="nav-ico" aria-hidden="true">🧭</span>{% if lang == 'fr' %}Guide{% elif lang == 'it' %}Guida{% else %}Guide{% endif %}</a>
+        <a href="#guest-guide"><span class="nav-ico" aria-hidden="true">🧭</span>{% if lang == 'fr' %}Guide{% elif lang == 'it' %}Guida{% elif lang == 'es' %}Guía{% else %}Guide{% endif %}</a>
         <a href="#services"><span class="nav-ico" aria-hidden="true">🛠️</span>{{ content.nav.services }}</a>
         <a href="#beauties"><span class="nav-ico" aria-hidden="true">🌊</span>{{ content.nav.beauties }}</a>
         <a href="#contact"><span class="nav-ico" aria-hidden="true">✉️</span>{{ content.nav.contact }}</a>
@@ -49,35 +49,30 @@
             <img class="airbnb-logo" src="{{ url_for('static', filename='images/airbnb.svg') }}" alt="" aria-hidden="true" />
             <span>{{ content.house.airbnb_label }}</span>
           </a>
-          <a class="btn btn-ghost" href="#contact">{{ content.contact.title }}</a>
+          <a class="btn btn-ghost" href="#arrival-reminders">{% if lang == 'fr' %}Arrivée & stationnement{% elif lang == 'it' %}Arrivo e parcheggio{% elif lang == 'es' %}Llegada y aparcamiento{% else %}Arrival & parking{% endif %}</a>
         </div>
       </div>
     </section>
 
-    <section class="section section-spotlight">
+    <section id="arrival-reminders" class="section section-spotlight" aria-labelledby="arrival-reminders-title">
       <div class="container spotlight-grid">
         <article class="spotlight-card spotlight-card--primary">
-          <p class="eyebrow">{% if lang == 'fr' %}Informations essentielles{% elif lang == 'it' %}Informazioni essenziali{% else %}Essential guest info{% endif %}</p>
-          <h3>{% if lang == 'fr' %}À lire avant l'arrivée{% elif lang == 'it' %}Da leggere prima dell'arrivo{% else %}Read before arrival{% endif %}</h3>
-          <ul class="check-list">
-            <li>{% if lang == 'fr' %}Maison non-fumeur{% elif lang == 'it' %}Casa non fumatori{% else %}Non-smoking home{% endif %}</li>
-            <li>{% if lang == 'fr' %}Silence de 22h00 à 08h00{% elif lang == 'it' %}Silenzio dalle 22:00 alle 08:00{% else %}Quiet hours from 10 PM to 8 AM{% endif %}</li>
-            <li>{% if lang == 'fr' %}Passage rapide uniquement devant la maison{% elif lang == 'it' %}Solo passaggio rapido davanti alla casa{% else %}Quick passage only in front of the house{% endif %}</li>
-            <li>{% if lang == 'fr' %}Animaux bienvenus avec nettoyage après séjour{% elif lang == 'it' %}Animali benvenuti con pulizia dopo il soggiorno{% else %}Pets welcome with cleanup after the stay{% endif %}</li>
-            <li>{% if lang == 'fr' %}Maison également habitée par les propriétaires : respectez leurs effets personnels{% elif lang == 'es' %}La casa también está habitada por sus propietarios: respete sus objetos personales{% elif lang == 'it' %}Casa abitata anche dai proprietari: rispettate i loro effetti personali{% else %}The house is also inhabited by its owners: please respect their personal belongings{% endif %}</li>
-            <li>{% if lang == 'fr' %}La propreté est fondamentale pour les prochains visiteurs{% elif lang == 'es' %}La limpieza es fundamental para los próximos visitantes{% elif lang == 'it' %}La pulizia è fondamentale per i prossimi ospiti{% else %}Keeping the house clean is essential for the next visitors{% endif %}</li>
-            <li>{% if lang == 'fr' %}Climatisation uniquement au dernier étage, en maintenance jusqu'en septembre{% elif lang == 'it' %}Aria condizionata solo all'ultimo piano, in manutenzione fino a settembre{% else %}Air conditioning only on the top floor, under maintenance until September{% endif %}</li>
-            <li>{% if lang == 'fr' %}Pas de recharge de voiture électrique sur les prises, ni d'objets sur le terrain du voisin{% elif lang == 'it' %}Niente ricarica auto elettrica sulle prese e nessun oggetto sul terreno del vicino{% else %}No EV charging on the outlets and nothing on the neighbor's land{% endif %}</li>
-          </ul>
-          <a class="btn btn-primary" href="{{ url_for('guide', lang=lang) }}">{% if lang == 'fr' %}Voir le guide complet{% elif lang == 'it' %}Vedi la guida completa{% else %}View the full guide{% endif %}</a>
+          <p class="eyebrow">{% if lang == 'fr' %}À lire avant l'arrivée{% elif lang == 'it' %}Da leggere prima dell'arrivo{% elif lang == 'es' %}Leer antes de llegar{% else %}Read before arrival{% endif %}</p>
+          <h3 id="arrival-reminders-title">🚗 {{ guide.highlights.parking_title }}</h3>
+          <p>{{ guide.highlights.parking_text }}</p>
+          <figure class="arrival-photo">
+            <img src="{{ url_for('static', filename='images/arrival/public-parking.jpg') }}" alt="{{ guide.highlights.parking_photo }}" loading="lazy" />
+            <figcaption>{{ guide.highlights.parking_photo }}</figcaption>
+          </figure>
+          <a class="btn btn-primary" href="#guest-guide">{{ guide.highlights.guide_title }}</a>
         </article>
 
         <article class="spotlight-card">
-          <p class="eyebrow">{% if lang == 'fr' %}Vie privée & RGPD{% elif lang == 'it' %}Privacy & GDPR{% else %}Privacy & GDPR{% endif %}</p>
-          <h3>{% if lang == 'fr' %}Lecture et médias à la demande{% elif lang == 'it' %}Lettura e media su richiesta{% else %}On-demand reading and media{% endif %}</h3>
-          <p>{% if lang == 'fr' %}Le site charge seulement les contenus externes quand vous choisissez de les ouvrir, pour rester plus discret et plus respectueux de votre vie privée.{% elif lang == 'it' %}Il sito carica i contenuti esterni solo quando scegli di aprirli, per essere più discreto e rispettoso della privacy.{% else %}The site only loads external content when you choose to open it, keeping the experience more private and discreet.{% endif %}</p>
+          <p class="eyebrow">{% if lang == 'fr' %}Dans la maison{% elif lang == 'it' %}In casa{% elif lang == 'es' %}En la casa{% else %}In the house{% endif %}</p>
+          <h3>🔥 {{ guide.highlights.stove_title }}</h3>
+          <p>{{ guide.highlights.stove_text }}</p>
           <div class="spotlight-actions">
-            <a class="btn btn-ghost" href="{{ url_for('privacy', lang=lang) }}">{% if lang == 'fr' %}En savoir plus{% elif lang == 'it' %}Scopri di più{% else %}Learn more{% endif %}</a>
+            <a class="btn btn-ghost" href="#guest-guide">{{ guide.highlights.guide_title }}</a>
           </div>
         </article>
       </div>
@@ -225,18 +220,28 @@
       </div>
     </section>
 
-    <section id="pdf-info" class="section paper">
+    <section id="guest-guide" class="section paper guest-guide-home" aria-labelledby="guest-guide-title">
       <div class="container">
-        <h3 class="section-title"><span class="section-ico" aria-hidden="true">📘</span>{{ content.pdf_info.title }}</h3>
-        <div class="grid-two">
-          {% for card in content.pdf_info.cards %}
-            <article class="card">
-              <h4>{{ card.title }}</h4>
+        <h3 id="guest-guide-title" class="section-title"><span class="section-ico" aria-hidden="true">📘</span>{{ guide.highlights.guide_title }}</h3>
+        <p class="guide-home-intro">{{ guide.highlights.guide_intro }}</p>
+        <div class="guide-home-actions">
+          <a class="btn btn-primary" href="{{ url_for('static', filename='docs/bilieu-welcome-guide.pdf') }}" target="_blank" rel="noopener noreferrer">{{ guide.highlights.pdf_label }}</a>
+        </div>
+        <div class="guide-sections">
+          {% for section in guide.sections %}
+            <article class="card guide-card">
+              <h4>{{ section.title }}</h4>
               <ul>
-                {% for item in card["items"] %}
+                {% for item in section["items"] %}
                   <li>{{ item }}</li>
                 {% endfor %}
               </ul>
+              {% if loop.first %}
+                <figure class="arrival-photo">
+                  <img src="{{ url_for('static', filename='images/arrival/footpath.jpg') }}" alt="{{ guide.highlights.path_photo }}" loading="lazy" />
+                  <figcaption>{{ guide.highlights.path_photo }}</figcaption>
+                </figure>
+              {% endif %}
             </article>
           {% endfor %}
         </div>
