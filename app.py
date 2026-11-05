@@ -14,10 +14,10 @@ SUPPORTED_LANGS = ["fr", "en", "it", "es"]
 ADSENSE_CLIENT = os.getenv("ADSENSE_CLIENT", "ca-pub-6158185990205930").strip()
 AD_PAGES = {"index": "home", "house_photos": "content", "history": "content", "environment": "content"}
 AD_COPY = {
-    "fr": {"label": "Publicité", "notice": "Ce site utilise un stockage essentiel pour mémoriser votre choix. Si vous acceptez, les pages de découverte peuvent charger des annonces Google AdSense. Google et ses partenaires peuvent utiliser des cookies pour afficher et mesurer ces annonces."},
-    "en": {"label": "Advertisement", "notice": "This site uses essential storage to remember your choice. If you accept, discovery pages may load Google AdSense ads. Google and its partners may use cookies to display and measure those ads."},
-    "it": {"label": "Pubblicità", "notice": "Questo sito usa lo spazio di archiviazione essenziale per ricordare la tua scelta. Se accetti, le pagine da esplorare possono caricare annunci Google AdSense. Google e i suoi partner possono usare cookie per mostrarli e misurarli."},
-    "es": {"label": "Publicidad", "notice": "Este sitio usa almacenamiento esencial para recordar tu elección. Si aceptas, las páginas de descubrimiento pueden cargar anuncios de Google AdSense. Google y sus socios pueden usar cookies para mostrarlos y medirlos."},
+    "fr": {"label": "Publicité"},
+    "en": {"label": "Advertisement"},
+    "it": {"label": "Pubblicità"},
+    "es": {"label": "Publicidad"},
 }
 
 AIRBNB_URL = os.getenv(
@@ -1391,13 +1391,14 @@ SUPPORT["es"] = {
 }
 for localized_data in (HISTORY, BUS, ENVIRONMENT, GUIDE, LEGAL):
     localized_data["es"] = deepcopy(localized_data["en"])
-for language, cookie_text, title, ad_text in (
-    ("fr", "Le site utilise un stockage essentiel pour fonctionner et mémoriser votre choix de consentement.", "Publicité", "Avec votre accord, les pages de découverte peuvent charger des annonces Google AdSense. Google et ses partenaires peuvent utiliser des cookies ou identifiants pour afficher et mesurer ces annonces. Vous pouvez modifier votre choix via le lien de gestion des cookies."),
-    ("en", "The site uses essential storage to operate and remember your consent choice.", "Advertising", "With your consent, discovery pages may load Google AdSense ads. Google and its partners may use cookies or identifiers to display and measure those ads. You can change your choice using the cookie settings link."),
-    ("it", "Il sito usa lo spazio di archiviazione essenziale per funzionare e ricordare la scelta di consenso.", "Pubblicità", "Con il tuo consenso, le pagine da esplorare possono caricare annunci Google AdSense. Google e i suoi partner possono usare cookie o identificatori per mostrarli e misurarli. Puoi modificare la scelta dal link per la gestione dei cookie."),
-    ("es", "El sitio usa almacenamiento esencial para funcionar y recordar tu elección de consentimiento.", "Publicidad", "Con tu consentimiento, las páginas de descubrimiento pueden cargar anuncios de Google AdSense. Google y sus socios pueden usar cookies o identificadores para mostrarlos y medirlos. Puedes cambiar tu elección en el enlace de configuración de cookies."),
+for language, cookie_text, choice_text, title, ad_text in (
+    ("fr", "Les choix relatifs aux annonces sont gérés par la plateforme de consentement de Google sur les pages de découverte.", "La plateforme conserve votre choix dans votre navigateur.", "Publicité", "Les pages de découverte peuvent charger des annonces Google AdSense. Google et ses partenaires peuvent utiliser des cookies ou identifiants pour afficher et mesurer ces annonces selon votre choix. Vous pouvez modifier ce choix via le lien de gestion des cookies."),
+    ("en", "Advertising choices are managed by Google's consent platform on discovery pages.", "The platform stores your choice in your browser.", "Advertising", "Discovery pages may load Google AdSense ads. Google and its partners may use cookies or identifiers to display and measure those ads according to your choice. You can change it using the cookie settings link."),
+    ("it", "Le scelte relative agli annunci sono gestite dalla piattaforma di consenso di Google nelle pagine da esplorare.", "La piattaforma conserva la scelta nel browser.", "Pubblicità", "Le pagine da esplorare possono caricare annunci Google AdSense. Google e i suoi partner possono usare cookie o identificatori per mostrarli e misurarli in base alla tua scelta. Puoi modificarla dal link per la gestione dei cookie."),
+    ("es", "Las opciones sobre anuncios se gestionan mediante la plataforma de consentimiento de Google en las páginas de descubrimiento.", "La plataforma guarda tu elección en el navegador.", "Publicidad", "Las páginas de descubrimiento pueden cargar anuncios de Google AdSense. Google y sus socios pueden usar cookies o identificadores para mostrarlos y medirlos según tu elección. Puedes cambiarla en el enlace de configuración de cookies."),
 ):
     LEGAL[language]["sections"][0]["items"][0] = cookie_text
+    LEGAL[language]["sections"][0]["items"][1] = choice_text
     LEGAL[language]["sections"].append({"title": title, "items": [ad_text]})
 GUIDE["es"].update(
     title="Guía de la estancia",

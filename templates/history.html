@@ -4,7 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{{ content.meta_title }} · {{ history.title }}</title>
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta name="google-adsense-account" content="{{ ad_client }}" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ ad_client }}" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
 </head>
 <body>
@@ -78,25 +80,13 @@
     <div class="container footer-legal-wrap">
       <p>© Bilieu - Lac de Paladru</p>
       <div class="footer-links">
-        <a href="{{ url_for('privacy', lang=lang) }}">{% if lang == 'fr' %}Confidentialité & cookies{% elif lang == 'it' %}Privacy e cookie{% else %}Privacy & cookies{% endif %}</a>
+        <a href="{{ url_for('privacy', lang=lang) }}">{% if lang == 'fr' %}Confidentialité & cookies{% elif lang == 'it' %}Privacy e cookie{% elif lang == 'es' %}Privacidad y cookies{% else %}Privacy & cookies{% endif %}</a>
         <a href="https://www.youtube.com/@Bilieu-ville" target="_blank" rel="noopener noreferrer">YouTube</a>
-        <button type="button" class="cookie-settings-btn">{% if lang == 'fr' %}Gérer les cookies{% elif lang == 'it' %}Gestisci cookie{% else %}Manage cookies{% endif %}</button>
+        <button type="button" class="cookie-settings-btn">{% if lang == 'fr' %}Gérer les cookies{% elif lang == 'it' %}Gestisci cookie{% elif lang == 'es' %}Gestionar cookies{% else %}Manage cookies{% endif %}</button>
       </div>
       <a class="hidden-guide-link" href="{{ url_for('guide', lang=lang) }}" aria-label="Guide séjour">guid</a>
     </div>
   </footer>
-
-  <div class="cookie-banner" data-cookie-banner hidden>
-    <p>{{ ad_copy.notice }}</p>
-    <div class="cookie-actions">
-      <button type="button" class="btn btn-primary" data-cookie-accept>
-        {% if lang == 'fr' %}Accepter{% elif lang == 'it' %}Accetta{% else %}Accept{% endif %}
-      </button>
-      <button type="button" class="btn btn-ghost cookie-decline" data-cookie-decline>
-        {% if lang == 'fr' %}Refuser{% elif lang == 'it' %}Rifiuta{% else %}Decline{% endif %}
-      </button>
-    </div>
-  </div>
 
   <script src="{{ url_for('static', filename='js/main.js') }}"></script>
   <script src="{{ url_for('static', filename='js/ads.js') }}" defer></script>

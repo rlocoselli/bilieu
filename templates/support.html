@@ -28,7 +28,7 @@
       {% endfor %}
     </div></div></section>
   </main>
-  <footer class="site-footer"><div class="container footer-legal-wrap"><p>© Bilieu - Lac de Paladru</p><a href="{{ url_for('index', lang=lang) }}#home">{% if lang == 'fr' %}Retour à l'accueil{% elif lang == 'it' %}Torna alla home{% else %}Back home{% endif %}</a></div></footer>
+  <footer class="site-footer"><div class="container footer-legal-wrap"><p>© Bilieu - Lac de Paladru</p><div class="footer-links"><a href="{{ url_for('privacy', lang=lang) }}">{% if lang == 'fr' %}Confidentialité & cookies{% elif lang == 'it' %}Privacy e cookie{% elif lang == 'es' %}Privacidad y cookies{% else %}Privacy & cookies{% endif %}</a><button type="button" class="cookie-settings-btn">{% if lang == 'fr' %}Gérer les cookies{% elif lang == 'it' %}Gestisci cookie{% elif lang == 'es' %}Gestionar cookies{% else %}Manage cookies{% endif %}</button></div></div></footer>
   <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>
