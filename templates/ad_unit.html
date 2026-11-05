@@ -1,0 +1,6 @@
+{% if ad_client and ad_slot %}
+<aside class="ad-placement" data-ad-slot="{{ ad_slot }}" hidden aria-label="{{ ad_copy.label }}">
+  <span class="ad-label">{{ ad_copy.label }}</span>
+  <ins class="adsbygoogle" style="display:block" data-ad-client="{{ ad_client }}" data-ad-slot="{{ ad_slot }}" data-ad-format="auto" data-full-width-responsive="true"></ins>
+</aside>
+{% endif %}

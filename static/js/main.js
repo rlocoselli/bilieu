@@ -6,10 +6,10 @@ const cookieDeclineBtn = document.querySelector('[data-cookie-decline]');
 const cookieSettingsButtons = document.querySelectorAll('.cookie-settings-btn');
 
 if (cookieBanner) {
-  const cookieKey = 'bilieu_cookie_consent';
+  const cookieKey = 'bilieu_cookie_consent_v2';
 
   const readCookieConsent = () => {
-    const match = document.cookie.match(/(?:^|; )bilieu_cookie_consent=([^;]+)/);
+    const match = document.cookie.match(/(?:^|; )bilieu_cookie_consent_v2=([^;]+)/);
     return match ? decodeURIComponent(match[1]) : null;
   };
 
@@ -22,20 +22,23 @@ if (cookieBanner) {
   };
 
   const writeConsent = (value) => {
-    document.cookie = `bilieu_cookie_consent=${encodeURIComponent(value)}; path=/; max-age=31536000; samesite=lax`;
+    document.cookie = `bilieu_cookie_consent_v2=${encodeURIComponent(value)}; path=/; max-age=31536000; samesite=lax`;
     try {
       localStorage.setItem(cookieKey, value);
     } catch (error) {}
+    document.documentElement.dataset.adConsent = value;
+    window.dispatchEvent(new Event('bilieu:consent'));
   };
 
   const clearConsent = () => {
-    document.cookie = 'bilieu_cookie_consent=; path=/; max-age=0; samesite=lax';
+    document.cookie = 'bilieu_cookie_consent_v2=; path=/; max-age=0; samesite=lax';
     try {
       localStorage.removeItem(cookieKey);
     } catch (error) {}
   };
 
   const hasDecision = readConsent();
+  document.documentElement.dataset.adConsent = hasDecision || 'unknown';
 
   const showCookieBanner = () => {
     cookieBanner.hidden = false;
@@ -62,8 +65,10 @@ if (cookieBanner) {
 
   if (cookieDeclineBtn) {
     cookieDeclineBtn.addEventListener('click', () => {
+      const wasAccepted = document.documentElement.dataset.adConsent === 'accepted';
       writeConsent('declined');
       hideCookieBanner();
+      if (wasAccepted) window.location.reload();
     });
   }
 

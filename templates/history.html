@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{{ content.meta_title }} · {{ history.title }}</title>
+  <meta name="google-adsense-account" content="{{ ad_client }}" />
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
 </head>
 <body>
@@ -34,7 +35,7 @@
     </div>
   </header>
 
-  <main class="guide-page">
+  <main data-ad-client="{{ ad_client }}" class="guide-page">
     <section class="hero hero-small">
       <div class="hero-overlay"></div>
       <div class="container hero-content">
@@ -56,6 +57,7 @@
       </div>
     </section>
 
+    {% include "ad_unit.html" %}
     <section class="section">
       <div class="container guide-sections">
         {% for section in history.sections %}
@@ -85,15 +87,7 @@
   </footer>
 
   <div class="cookie-banner" data-cookie-banner hidden>
-    <p>
-      {% if lang == 'fr' %}
-        Ce site utilise uniquement des cookies nécessaires au fonctionnement et à la mémorisation de votre choix de consentement.
-      {% elif lang == 'it' %}
-        Questo sito utilizza solo cookie necessari al funzionamento e alla memorizzazione della tua scelta di consenso.
-      {% else %}
-        This site only uses cookies required for operation and to remember your consent choice.
-      {% endif %}
-    </p>
+    <p>{{ ad_copy.notice }}</p>
     <div class="cookie-actions">
       <button type="button" class="btn btn-primary" data-cookie-accept>
         {% if lang == 'fr' %}Accepter{% elif lang == 'it' %}Accetta{% else %}Accept{% endif %}
@@ -105,5 +99,6 @@
   </div>
 
   <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/ads.js') }}" defer></script>
 </body>
 </html>

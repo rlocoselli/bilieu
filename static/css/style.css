@@ -1590,3 +1590,26 @@ a {
     height: 120px;
   }
 }
+.ad-placement {
+  max-width: 1080px;
+  min-height: 120px;
+  margin: 28px auto;
+  padding: 16px 24px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.ad-placement[hidden] { display: none; }
+.ad-placement .adsbygoogle { width: 100%; }
+.ad-label {
+  display: block;
+  margin-bottom: 12px;
+  color: #607179;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 600px) {
+  .ad-placement { min-height: 100px; margin: 20px auto; padding: 12px 18px; }
+}

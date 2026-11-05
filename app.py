@@ -11,6 +11,14 @@ logging.basicConfig(level=logging.INFO)
 app.logger.setLevel(logging.INFO)
 
 SUPPORTED_LANGS = ["fr", "en", "it", "es"]
+ADSENSE_CLIENT = os.getenv("ADSENSE_CLIENT", "ca-pub-6158185990205930").strip()
+AD_PAGES = {"index": "home", "house_photos": "content", "history": "content", "environment": "content"}
+AD_COPY = {
+    "fr": {"label": "Publicité", "notice": "Ce site utilise un stockage essentiel pour mémoriser votre choix. Si vous acceptez, les pages de découverte peuvent charger des annonces Google AdSense. Google et ses partenaires peuvent utiliser des cookies pour afficher et mesurer ces annonces."},
+    "en": {"label": "Advertisement", "notice": "This site uses essential storage to remember your choice. If you accept, discovery pages may load Google AdSense ads. Google and its partners may use cookies to display and measure those ads."},
+    "it": {"label": "Pubblicità", "notice": "Questo sito usa lo spazio di archiviazione essenziale per ricordare la tua scelta. Se accetti, le pagine da esplorare possono caricare annunci Google AdSense. Google e i suoi partner possono usare cookie per mostrarli e misurarli."},
+    "es": {"label": "Publicidad", "notice": "Este sitio usa almacenamiento esencial para recordar tu elección. Si aceptas, las páginas de descubrimiento pueden cargar anuncios de Google AdSense. Google y sus socios pueden usar cookies para mostrarlos y medirlos."},
+}
 
 AIRBNB_URL = os.getenv(
     "AIRBNB_URL",
@@ -1314,10 +1322,14 @@ LEGAL = {
 
 
 def common_context(lang):
+    ad_page = AD_PAGES.get(request.endpoint)
     return {
         "content": CONTENT[lang],
         "lang": lang,
         "supported_langs": SUPPORTED_LANGS,
+        "ad_client": ADSENSE_CLIENT if ad_page else "",
+        "ad_slot": os.getenv(f"ADSENSE_SLOT_{ad_page.upper()}", "").strip() if ad_page else "",
+        "ad_copy": AD_COPY[lang],
     }
 
 
@@ -1379,6 +1391,14 @@ SUPPORT["es"] = {
 }
 for localized_data in (HISTORY, BUS, ENVIRONMENT, GUIDE, LEGAL):
     localized_data["es"] = deepcopy(localized_data["en"])
+for language, cookie_text, title, ad_text in (
+    ("fr", "Le site utilise un stockage essentiel pour fonctionner et mémoriser votre choix de consentement.", "Publicité", "Avec votre accord, les pages de découverte peuvent charger des annonces Google AdSense. Google et ses partenaires peuvent utiliser des cookies ou identifiants pour afficher et mesurer ces annonces. Vous pouvez modifier votre choix via le lien de gestion des cookies."),
+    ("en", "The site uses essential storage to operate and remember your consent choice.", "Advertising", "With your consent, discovery pages may load Google AdSense ads. Google and its partners may use cookies or identifiers to display and measure those ads. You can change your choice using the cookie settings link."),
+    ("it", "Il sito usa lo spazio di archiviazione essenziale per funzionare e ricordare la scelta di consenso.", "Pubblicità", "Con il tuo consenso, le pagine da esplorare possono caricare annunci Google AdSense. Google e i suoi partner possono usare cookie o identificatori per mostrarli e misurarli. Puoi modificare la scelta dal link per la gestione dei cookie."),
+    ("es", "El sitio usa almacenamiento esencial para funcionar y recordar tu elección de consentimiento.", "Publicidad", "Con tu consentimiento, las páginas de descubrimiento pueden cargar anuncios de Google AdSense. Google y sus socios pueden usar cookies o identificadores para mostrarlos y medirlos. Puedes cambiar tu elección en el enlace de configuración de cookies."),
+):
+    LEGAL[language]["sections"][0]["items"][0] = cookie_text
+    LEGAL[language]["sections"].append({"title": title, "items": [ad_text]})
 GUIDE["es"].update(
     title="Guía de la estancia",
     intro="Todo lo necesario antes y durante la estancia: llegada, aparcamiento, acceso, habitaciones, equipamiento y normas importantes de la casa.",
