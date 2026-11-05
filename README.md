@@ -40,7 +40,7 @@ Les annonces automatiques utilisent le compte `ca-pub-6158185990205930` sur l'ac
 
 Pour afficher aussi une annonce dans l'emplacement prévu entre les sections, définir `ADSENSE_SLOT_HOME` et/ou `ADSENSE_SLOT_CONTENT` avec les identifiants numériques des blocs d'annonces créés dans AdSense. Sans ces variables, seules les annonces automatiques sont possibles. `ADSENSE_CLIENT` permet de changer le compte éditeur.
 
-La diffusion dépend de l'approbation du domaine dans AdSense. Pour les visiteurs de l'EEE, du Royaume-Uni et de Suisse, configurer aussi une plateforme de gestion du consentement certifiée par Google dans **AdSense → Confidentialité et messages** avant d'activer la diffusion.
+Le domaine public est `domusbiliacum.fr`. Son fichier `/ads.txt` autorise ce compte éditeur. Ajouter `domusbiliacum.fr` dans **AdSense → Sites** et attendre son approbation pour diffuser les annonces. Pour les visiteurs de l'EEE, du Royaume-Uni et de Suisse, configurer aussi une plateforme de gestion du consentement certifiée par Google dans **AdSense → Confidentialité et messages** avant d'activer la diffusion.
 
 ## Personnalisation rapide
 

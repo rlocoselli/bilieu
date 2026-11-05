@@ -2,7 +2,7 @@ import logging
 import os
 from copy import deepcopy
 
-from flask import Flask, jsonify, render_template, request
+from flask import Flask, Response, jsonify, render_template, request
 from werkzeug.exceptions import HTTPException
 
 
@@ -1704,6 +1704,11 @@ def privacy():
 @app.route("/health")
 def health_check():
     return jsonify(status="healthy"), 200
+
+
+@app.route("/ads.txt")
+def ads_txt():
+    return Response("google.com, pub-6158185990205930, DIRECT, f08c47fec0942fa0\n", mimetype="text/plain")
 
 
 @app.errorhandler(Exception)
